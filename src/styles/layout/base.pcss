@@ -30,10 +30,15 @@ body {
   margin: 0 auto;
   max-width: 1480px;
   width: 95%;
+  display: flex;
   // width: 1490px;
 
   @include phones {
     width: 85%;
+  }
+
+  &--col {
+    flex-direction: column;
   }
 }
 
@@ -63,13 +68,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: normal;
+  /* font-weight: normal; */
   margin: 0;
 }
 
 p {
   margin: 0;
   padding: 0;
+  line-height: 30px;
 }
 
 button[type="button"] {
@@ -80,10 +86,18 @@ button[type="button"] {
 a {
   color: inherit;
   cursor: pointer;
+  text-decoration: none;
 }
 
 img {
   display: block;
   max-width: 100%;
   max-height: 100%;
+}
+
+input,
+button,
+textarea {
+  outline: none;
+  border: initial;
 }

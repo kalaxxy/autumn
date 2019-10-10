@@ -1,7 +1,7 @@
 include ./mixins.pug
 
 <!DOCTYPE html>
-html(lang="en")
+html(lang="ru")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
@@ -10,6 +10,207 @@ html(lang="en")
   body
     .wrapper
       .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+        
+          main.main
+            
+            section.hello.fullscreen-section
+              .container.container--col
+                header.header
+                  .logo КИ
+                  +menu('menu', ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"])
+                  +socials('socials')
+                  .hamburger
+                .hello__title
+                  p.hello__subtitle Личный сайт веб разработчика
+                  h1 Катерина Иваненко
+                a.scroll(href="#")
+                  span.scroll__text Скролл
+                  .scroll__icon
+                  //- +icon('scroll', 'scroll__icon')
+
+            section.about.fullscreen-section
+              .container
+                .about__col
+                  .about__avatar
+                    +image('content/me.jpeg', 'user-pic')
+                  table.about__list
+                    tr.about__item
+                      td.about__item-title Проживаю:
+                      td.about__item-text Санкт-Петербург
+                    tr.about__item
+                      td.about__item-title Возраст:
+                      td.about__item-text 29 лет
+                    tr.about__item
+                      td.about__item-title Родилась:
+                      td.about__item-text 14 марта 1990
+                .about__col
+                  .about__subtitle Привет, меня зовут
+                  h2.section-title Катерина Иваненко
+                  p.about__desc Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты. 
+                  p.about__desc--italic Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все классно и красиво! 
+            
+            section.skills.fullscreen-section
+              .container.container--col
+                .skills__block
+                  h2.section-title Чем я могу быть полезна вам
+                  p.skills__desc Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все классно и красиво!
+                .skill
+                  h3.skill__subtitle Front-end
+                  svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
+                    circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
+                    circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.66s')
+                    +circle-gradient
+                  span.skill__name HTML5
+                  svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
+                    circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
+                    circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.54s')
+                    +circle-gradient
+                  span.skill__name CSS3
+                  svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
+                    circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
+                    circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.20s')
+                    +circle-gradient
+                  span.skill__name Javascript
+                  svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
+                    circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
+                    circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.10s')
+                    +circle-gradient
+                  span.skill__name Jquery и Vue.js
+                  h3.skill__subtitle Workflow
+                  svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
+                    circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
+                    circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.85s')
+                    +circle-gradient
+                  span.skill__name GIT
+                  svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
+                    circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
+                    circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.80s')
+                    +circle-gradient
+                  span.skill__name Terminal
+                  svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
+                    circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
+                    circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.50s')
+                    +circle-gradient
+                  span.skill__name Gulp
+                  svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
+                    circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
+                    circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.10s')
+                    +circle-gradient
+                  span.skill__name Webpack
+            
+            section.works.fullscreen-section
+              .container.container--col
+                h2.section-title.section-title--black Мои работы
+                .works__slider.slider
+                  ul.slider__list
+                    li.slider_item
+                      .slider__block
+                        +image('content/preview-1.jpg', 'slider__img', alt='Превью сайта школы')
+                        .slider__pagination
+                          +pagination('slider')
+                          .slider__arrows
+                            button.slider__arrow.slider__arrow--next
+                              +icon('arrow-down', 'arrow-next')
+                            button.slider__arrow.slider__arrow--prev
+                              +icon('arrow-down', 'arrow-prev')
+                            
+                      .slider__block
+                        ul.slider__tags
+                          li.slider__tag
+                            .slider__tag-wrap
+                              .slider__tag-name HTML
+                          li.slider__tag
+                            .slider__tag-wrap
+                              .slider__tag-name CSS
+                          li.slider__tag
+                            .slider__tag-wrap
+                              .slider__tag-name Javascript
+                        h3.slider__title Сайт школы образования
+                        p.slider__desc Эта девчонка проходила обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей! 
+                        a.slider__link(href="https://loftschool.com")
+                          +icon('link', 'slider__link-icon')
+                          .slider__link-text Посмотреть сайт
+            
+            section.reviews.fullscreen-section
+              .container.container--col
+                h2.section-title Что обо мне говорят
+                .reviews__slider
+                  .reviews__arrows
+                    button.reviews__arrow.reviews__arrow--prev
+                      +icon('arrow-down', 'arrow-prev')
+                    button.reviews__arrow.reviews__arrow--next
+                      +icon('arrow-down', 'arrow-next')
+                  ul.reviews__list
+                    li.reviews__item
+                      .reviews__content
+                        p Эта девчонка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                        .reviews__user
+                          img.reviews__avatar(src="/", alt="Дима")
+                          .reviews__username
+                            h4 Ковальчук Дмитрий
+                            h5 Основатель LoftSchool
+                    li.reviews__item
+                      .reviews__icon
+                      .reviews__content
+                        p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                        .reviews__user
+                          img.reviews__avatar(src="/", alt="Вова")
+                          .reviews__username
+                            h4 Владимир Сабанцев
+                            h5 Преподаватель
+            
+                h2.section-title Связаться со мной
+                .reviews__form
+                  form.form(action="")
+                    .form__row
+                      label.form__elem
+                        span.form__label Введите ваше имя
+                        input.form__input(type="text" name="name")
+                      label.form__elem
+                        span.form__label Введите ваш email
+                        input.form__input(type="text" name="email")
+                    .form__row
+                      label.form__elem
+                        span.form__label Сообщение к письму
+                        textarea.form__input.form__input--textarea(type="text" name="msg")
+                    .form__row
+                      button.form__btn(type="submit") Отправить
+
+            footer.footer
+              .footer__col
+                .footer__block
+                  .footer__cprt &copy; 2019
+                .footer__block
+                  .footer__title Катерина Иваненко
+                  .footer__desc Личный сайт веб-разработчика
+              .footer__col
+                .menu
+                  ul.menu__list
+                    li.menu__item
+                      a.menu__link(href="#") Главная
+                    li.menu__item
+                      a.menu__link(href="#") Обо мне
+                    li.menu__item
+                      a.menu__link(href="#") Навыки
+                    li.menu__item
+                      a.menu__link(href="#") Работы
+                    li.menu__item
+                      a.menu__link(href="#") Отзывы
+                    li.menu__item
+                      a.menu__link(href="#") Связаться
+                .footer__block
+                  .footer__desc Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool
+                  .socials
+                  ul.socials__list
+                    li.socials__item
+                      a.socials__link(href="#")
+                        .socials__icon
+                    li.socials__item
+                      a.socials__link(href="#")
+                        .socials__icon
+                    li.socials__item
+                      a.socials__link(href="#")
+                        .socials__icon
+                .footer__block
+                  .footer__desc Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                  span.footer__desc--italic
