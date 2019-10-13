@@ -1,0 +1,22 @@
+.section-wrap {
+  background-size: cover;
+
+  &--bg--mountains {
+    background-image: url('~images/content/hello_bg.jpg');
+  }
+
+  &--bg--leaves {
+    background-image: url('~images/content/bg_about.jpg');
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      background: url('~images/content/leaves.png') center right / contain no-repeat;
+      width: 33%;
+      height: 100%;
+      bottom: 103px;
+      right: -129px;
+    }
+  }
+}

@@ -14,21 +14,45 @@
 }
 
 .form__label {
+  display: block;
   opacity: 0.3;
   font-weight: 600;
+  margin-left: 40px;
+  margin-bottom: 7px;
 }
 
 .form__input {
   width: 100%;
   background-color: transparent;
-  padding: 19px 40px;
+  padding: 15px 40px;
   border-bottom: 2px solid #fff;
   color: #fff;
   font-size: 18px;
   font-weight: 700;
 
+  &--name {
+    background: svg-load('user.svg', fill=rgba($text-color, .3), width=26px, height=30px) left top no-repeat;
+
+    &:hover, &:focus {
+      background: svg-load('user.svg', fill=$orange, width=26px, height=30px) left top no-repeat;
+    }
+  }
+
+  &--email {
+    background: svg-load('envelope.svg', fill=rgba($text-color, .3), width=30px, height=23px) left top no-repeat;
+
+    &:hover, &:focus {
+      background: svg-load('envelope.svg', fill=$orange, width=30px, height=23px) left top no-repeat;
+    }
+  }
+
   &--textarea {
     resize: none;
+    background: svg-load('message.svg', fill=rgba($text-color, .3), width=30px, height=30px) left top no-repeat;
+
+    &:hover, &:focus {
+      background: svg-load('message.svg', fill=$orange, width=30px, height=30px) left top no-repeat;
+    }
   }
 }
 
@@ -38,4 +62,8 @@
   text-transform: uppercase;
   color: #fff;
   font-weight: 700;
+
+  &:hover {
+    background-image: linear-gradient(to right, #ff7f00 0%, #ff9d00 100%);
+  }
 }

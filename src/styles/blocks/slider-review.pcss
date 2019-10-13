@@ -1,0 +1,54 @@
+.slider-review {
+  display: flex;
+}
+
+.slider-review__item {
+  flex: 1;
+  margin: 0 80px;
+  position: relative;
+  width: 40%;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 75px;
+    height: 63px;
+    background: svg-load('quote.svg', fill=rgba(#fff, .05), width=100%, height=100%) center center no-repeat;
+    top: 0;
+    right: 105%;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.slider-review__content {
+  
+  font-weight: 600;
+
+  p {
+    opacity: 0.5;
+    margin-bottom: 20px;
+  }
+}
+
+.slider-review__user {
+  display: flex;
+}
+
+.slider-review__avatar {
+  margin-right: 30px;
+}
+
+.slider-review__username h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.slider-review__username h5 {
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.3;
+}

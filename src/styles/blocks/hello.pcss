@@ -1,33 +1,25 @@
 .hello {
-  background-image: url('~images/content/hello_bg.jpg');
-  background-size: cover;
-  position: relative;
-
   & .container--col {
-    justify-content: space-evenly;
-    height: 100%;
+    justify-content: space-between;
   }
 }
 
 .hello__content {
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 100%;
-}
-
-.hello__title {
-  display: flex;
   justify-content: center;
 }
 
-.hello__subtitle {
-  width: 140px;
+.hello__title {
+  opacity: 0.4;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  max-width: 160px;
   text-align: right;
   margin-right: 42px;
 }
 
-.hello__title h1 {
+.hello__subtitle {
   width: 500px;
   font-size: 72px;
   font-weight: 800;

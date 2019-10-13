@@ -1,6 +1,5 @@
 .socials__list {
   display: flex;
-  justify-content: space-between;
 }
 
 .socials__item {
@@ -13,12 +12,32 @@
 
 .socials__link {
   display: block;
-  width: 25px;
-  height: 25px;
+  width: 50px;
+  height: 50px;
   fill: #69605b;
+  position: relative;
+
+  & svg {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
   &:hover {
     fill: #fff;
   }
 }
 
+.socials--circle {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgba($text-color, .3);
+
+  &:hover {
+    border-color: rgba($text-color, 1);
+  }
+}

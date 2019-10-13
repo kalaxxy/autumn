@@ -13,22 +13,42 @@ mixin menu(className, items, activeItem)
         li(class=`${className}__item` + ( (ndx === activeItem) ? ` ${className}__item--active` : ''))
           a(class=`${className}__link` href="#")= item
 
-mixin socials(className)
+mixin socials(className, classMod)
   div(class=`${className}`)
     ul(class=`${className}__list`)
       each social in ['insta', 'vk', 'github']
         li(class=`${className}__item`)
-          a(class=`${className}__link ${className}__link--${social}` href="#")
+          a(class=`${className}__link ${className}__link--${social} ${classMod}` href="#")
             +icon(`${social}`)
+
+mixin userinfo(className)  
+  table(class=`${className}__list`)
+    -
+      var items = [
+        ['Проживаю:', 'Санкт-Петербург'],
+        ['Возраст:', '29 лет'],
+        ['Родилась:', '14 марта 1990'],
+      ]
+
+    each item in items
+      tr(class=`${className}__item`)
+        td(class=`${className}__item-title`) #{item[0]}
+        td(class=`${className}__item-text`) #{item[1]}
 
 mixin circle-gradient()
   defs
     lineargradient#gradient
       stop(offset='0%' stop-color='#d47c1d')
-      stop(offset='100%' stop-color='dc9322')
+      stop(offset='100%' stop-color='#dc9322')
 
 mixin pagination(className)
   ul(class=`${className}__previews`)
-    each num in ['1', '2', '3', '4']
+    - for (var i = 1; i < 5; i++)
       li(class=`${className}__preview`)
-        button(class=`${className}__btn ${className}__btn--${num}`)
+        button(class=`${className}__btn ${className}__btn--${i}`)
+        div(class=`${className}__overlay`)
+
+mixin tags(className)
+  each tag in ['HTML', 'CSS', 'Javascript']
+    li(class=`${className}__item`)
+      div(class=`${className}__item-name`) #{tag}

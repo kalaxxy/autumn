@@ -1,0 +1,80 @@
+.slide {
+  display: flex;
+}
+
+.slide__left {
+  position: relative;
+  display: flex;
+  flex: 3;
+  margin-right: 5%;
+}
+
+.slide__pagination {
+  margin-left: -712px;
+  margin-top: 373px;
+}
+
+.slide__previews {
+  display: flex;
+}
+
+.slide__preview {
+  position: relative;
+}
+
+.slide__btn {
+  width: 178px;
+  height: 100px;
+
+  &--1 {
+    background: url('~images/content/preview-1.jpg') center center / cover no-repeat;
+  }
+
+  &--2 {
+    background: url('~images/content/preview-2.jpg') center center / cover no-repeat;
+  }
+
+  &--3 {
+    background: url('~images/content/preview-3.jpg') center center / cover no-repeat;
+  }
+
+  &--4 {
+    background: url('~images/content/preview-4.jpg') center center / cover no-repeat;
+  }
+}
+
+.slide__arrows {
+  margin-top: 373px;
+}
+
+.slide__right {
+  position: relative;
+  flex: 1;
+
+  &:before {
+    content: '2';
+    position: absolute;
+    font-size: 400px;
+    font-weight: 800;
+    color: #e6e6e6;
+    bottom: 24px;
+    right: 96%;
+    z-index: -1;
+  }
+}
+
+.slide__tags {
+  margin-bottom: 46px;
+}
+
+.slide__title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.slide__desc {
+  opacity: 0.7;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
