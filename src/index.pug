@@ -51,68 +51,37 @@ html(lang="ru")
               .profit__text
                 p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все классно и красиво!
             ul.skills
-              li.skills__item.skill-block
-                h3.skill-block__title Front-end
-                ul.skill-block__list
-                  li.skill-block__item
-                    .skill
-                      span.skill__name HTML5
-                      svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
-                        circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
-                        circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.66s')
-                        +circle-gradient
-                  li.skill-block__item
-                    .skill
-                      span.skill__name CSS3
-                      svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
-                        circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
-                        circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.54s')
-                        +circle-gradient
-                  li.skill-block__item
-                    .skill
-                      span.skill__name Javascript
-                      svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
-                        circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
-                        circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.20s')
-                        +circle-gradient
-                  li.skill-block__item
-                    .skill
-                      span.skill__name Jquery и Vue.js
-                      svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
-                        circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
-                        circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.10s')
-                        +circle-gradient
-                h3.skill-block__title Workflow
-                ul.skill-block__list
-                  li.skill-block__item
-                    .skill
-                      span.skill__name GIT
-                      svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
-                        circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
-                        circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.85s')
-                        +circle-gradient
-                  li.skill-block__item
-                    .skill
-                      span.skill__name Terminal
-                      svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
-                        circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
-                        circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.80s')
-                        +circle-gradient
-                  li.skill-block__item
-                    .skill
-                      span.skill__name Gulp
-                      svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
-                        circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
-                        circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.50s')
-                        +circle-gradient
-                  li.skill-block__item
-                    .skill
-                      span.skill__name Webpack
-                      svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
-                        circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
-                        circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style='animation-delay: -.10s')
-                        +circle-gradient
-        
+              -
+                var skills = [
+                  ['Front-end', [
+                    {title: 'HTML5', value: 66},
+                    {title: 'CSS3', value: 54},
+                    {title: 'Javascript', value: 2},
+                    {title: 'Jquery и Vue.js', value: 1}
+                    ]
+                  ],
+                  ['Workflow', [
+                    {title: 'GIT', value: 85},
+                    {title: 'Terminal', value: 8},
+                    {title: 'Gulp', value: 5},
+                    {title: 'Webpack', value: 1}
+                    ]
+                  ]
+                ]
+
+              each item in skills
+                li.skills__item.skill-block
+                  h3.skill-block__title #{item[0]}
+                  ul.skill-block__list
+                    each skill in item[1]
+                      li.skill-block__item
+                        .skill
+                          span.skill__name #{skill.title}
+                          svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
+                            circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
+                            circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style=`animation-delay: -.${skill.value}s`)
+                            +circle-gradient
+
         section.works.fullscreen-section
           .container.container--col
             h2.section-title.section-title--black Мои работы
@@ -179,14 +148,14 @@ html(lang="ru")
                   .form__row
                     label.form__elem
                       span.form__label Введите ваше имя
-                      input.form__input.form__input--name(type="text" name="name")
+                      input.form__input.form__input--name(type="text" name="name" placeholder="Введите ваше имя")
                     label.form__elem
                       span.form__label Введите ваш email
-                      input.form__input.form__input--email(type="text" name="email")
+                      input.form__input.form__input--email(type="text" name="email" placeholder="Введите ваш email")
                   .form__row
                     label.form__elem
                       span.form__label Сообщение к письму
-                      textarea.form__input.form__input--textarea(type="text" name="msg")
+                      textarea.form__input.form__input--textarea(type="text" name="msg" placeholder="Сообщение к письму")
                   .form__row
                     button.form__btn(type="submit") Отправить
 

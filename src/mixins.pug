@@ -43,10 +43,10 @@ mixin circle-gradient()
 
 mixin pagination(className)
   ul(class=`${className}__previews`)
-    - for (var i = 1; i < 5; i++)
+    - for (var i = 0; i < 4; i++)
       li(class=`${className}__preview`)
-        button(class=`${className}__btn ${className}__btn--${i}`)
-        div(class=`${className}__overlay`)
+        button(class=`${className}__btn ${className}__btn--${i+1}`)
+          div(class=`${className}__overlay`)
 
 mixin tags(className)
   each tag in ['HTML', 'CSS', 'Javascript']

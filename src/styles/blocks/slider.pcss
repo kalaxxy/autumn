@@ -20,9 +20,15 @@
 
 .slide__preview {
   position: relative;
+  display: flex;
+
+  & + .active {
+    border: 3px solid $orange;
+  }
 }
 
 .slide__btn {
+  position: relative;
   width: 178px;
   height: 100px;
 
@@ -43,6 +49,21 @@
   }
 }
 
+.slide__overlay {
+  position: absolute;
+  width: 178px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  background-color: rgba($orange, .3);
+  opacity: 0;
+  transition: .4s;
+}
+
+.slide__btn:hover .slide__overlay {
+  opacity: 1;
+}
+
 .slide__arrows {
   margin-top: 373px;
 }
@@ -52,7 +73,7 @@
   flex: 1;
 
   &:before {
-    content: '2';
+    content: '1';
     position: absolute;
     font-size: 400px;
     font-weight: 800;

@@ -29,29 +29,30 @@
   color: #fff;
   font-size: 18px;
   font-weight: 700;
+  transition: .4s;
 
   &--name {
-    background: svg-load('user.svg', fill=rgba($text-color, .3), width=26px, height=30px) left top no-repeat;
+    background: svg-load('user.svg', fill=rgba($text-color, .3), width=26px, height=30px) left no-repeat;
 
     &:hover, &:focus {
-      background: svg-load('user.svg', fill=$orange, width=26px, height=30px) left top no-repeat;
+      background: svg-load('user.svg', fill=$orange, width=26px, height=30px) left no-repeat;
     }
   }
 
   &--email {
-    background: svg-load('envelope.svg', fill=rgba($text-color, .3), width=30px, height=23px) left top no-repeat;
+    background: svg-load('envelope.svg', fill=rgba($text-color, .3), width=30px, height=23px) left no-repeat;
 
     &:hover, &:focus {
-      background: svg-load('envelope.svg', fill=$orange, width=30px, height=23px) left top no-repeat;
+      background: svg-load('envelope.svg', fill=$orange, width=30px, height=23px) left no-repeat;
     }
   }
 
   &--textarea {
     resize: none;
-    background: svg-load('message.svg', fill=rgba($text-color, .3), width=30px, height=30px) left top no-repeat;
+    background: svg-load('message.svg', fill=rgba($text-color, .3), width=30px, height=30px) left 25% no-repeat;
 
     &:hover, &:focus {
-      background: svg-load('message.svg', fill=$orange, width=30px, height=30px) left top no-repeat;
+      background: svg-load('message.svg', fill=$orange, width=30px, height=30px) left 25% no-repeat;
     }
   }
 }
@@ -62,6 +63,7 @@
   text-transform: uppercase;
   color: #fff;
   font-weight: 700;
+  transition: .4s;
 
   &:hover {
     background-image: linear-gradient(to right, #ff7f00 0%, #ff9d00 100%);
