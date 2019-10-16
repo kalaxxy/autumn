@@ -1,15 +1,26 @@
-.hello {
-  & .container--col {
-    justify-content: space-between;
-  }
+.hello__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 35% 35% 30%;
+  grid-template-areas:
+    'header'
+    'content'
+    'scroll';
 }
 
 .hello__content {
-  display: flex;
-  justify-content: center;
+  grid-area: content;
+  display: grid;
+  grid-template: 
+    'title name' 1fr
+    / 1fr 1fr;
 }
 
 .hello__title {
+  grid-area: title;
+  justify-self: end;
+  display: flex;
+  align-items: flex-start;
   opacity: 0.4;
   font-size: 18px;
   font-weight: 600;
@@ -20,8 +31,18 @@
 }
 
 .hello__subtitle {
+  grid-area: name;
   width: 500px;
   font-size: 72px;
   font-weight: 800;
   line-height: 60px;
+}
+
+.hello__scroll {
+  grid-area: scroll;
+  font-size: 18px;
+
+  @include desktop() {
+    font-size: 18px;
+  }
 }

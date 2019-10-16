@@ -6,15 +6,31 @@
     content: '';
     position: absolute;
     background: url('~images/content/hands.png') bottom left / contain no-repeat;
-    width: 30%;
+    width: 40%;
     height: 100%;
     left: 0;
     bottom: -74px;
+
+    @include desktop() {
+      left: -60px;
+      bottom: -63px;
+    }
   }
 }
 
+.profit__container {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  grid-template-rows: 30% 70%;
+  grid-template-areas: 
+    'profit-desc profit-desc'
+    'hands skills';
+}
+
 .profit__desc {
-  margin: 0 auto 10%;
+  grid-area: profit-desc;
+  align-self: center;
+  margin: 0 auto;
   width: 45%;
 }
 
@@ -22,3 +38,4 @@
   font-weight: 600;
   opacity: 0.5;
 }
+

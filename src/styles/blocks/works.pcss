@@ -1,8 +1,18 @@
 .works {
   color: $black;
   position: relative;
+}
 
-  & .container {
-    justify-content: center;
-  }
+.works__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 25% 1fr;
+  grid-template-areas: 
+    'works-title'
+    'slider';
+}
+
+.works__title {
+  grid-area: works-title;
+  align-self: center;
 }

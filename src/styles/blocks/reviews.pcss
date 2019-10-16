@@ -1,10 +1,20 @@
-.reviews {
-  height: 60%;
-  display: flex; 
-  align-items: center;
+.reviews-wrap {
+  height: 130vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 
-  & .container {
-    justify-content: center; 
+.reviews__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr;
+  grid-template-areas:
+    'reviews-title controls .'
+    'rewiews-slider rewiews-slider .';
+  
+  @include desktop() {
+    grid-template-columns: 1fr 1fr 0.5fr;
   }
 }
 
@@ -16,18 +26,21 @@
   }
 }
 
-.reviews__slider {
-  width: 80%;
+.reviews__title {
+  grid-area: reviews-title;
+  align-self: center;
 }
 
-.reviews__list {
-  width: 80%;
+.reviews__arrows {
+  grid-area: controls;
+  align-self: center;
+}
+
+.reviews__slider {
+  grid-area: rewiews-slider;
+
 }
 
 .reviews__content p {
   min-height: 130px;
-}
-
-.reviews__form {
-  width: 60%;
 }

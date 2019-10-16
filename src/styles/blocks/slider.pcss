@@ -1,3 +1,7 @@
+.slider {
+  grid-area: slider;
+}
+
 .slide {
   display: flex;
 }
@@ -6,12 +10,21 @@
   position: relative;
   display: flex;
   flex: 3;
-  margin-right: 5%;
+  margin-right: 13%;
+
+  @include desktop() {
+    flex: 2;
+    margin-right: 9%;
+  }
 }
 
 .slide__pagination {
   margin-left: -712px;
   margin-top: 373px;
+
+  @include desktop() {
+    margin-top: 280px;;
+  }
 }
 
 .slide__previews {
@@ -66,6 +79,10 @@
 
 .slide__arrows {
   margin-top: 373px;
+
+  @include desktop() {
+    margin-top: 280px;;
+  }
 }
 
 .slide__right {
@@ -81,6 +98,11 @@
     bottom: 24px;
     right: 96%;
     z-index: -1;
+
+    @include desktop() {
+      font-size: 300px;
+      bottom: 100px;
+    }
   }
 }
 

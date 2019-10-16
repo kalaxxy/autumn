@@ -1,20 +1,30 @@
-.about {
+.about__container {
   display: grid;
-  align-content: center;
-  
-  & .container {
-    justify-content: space-evenly;
-  }
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: 
+    '. .'
+    'about-left about-right' 
+    '. .';
+  align-items: start;
 }
 
-.about__left, .about__right {
-  max-width: 40%;
+.about__left {
+  grid-area: about-left;
+}
+
+.about__right {
+  grid-area: about-right;
 }
 
 .about__subtitle {
   margin-bottom: 5%;
   font-weight: 600;
   opacity: 0.5;
+}
+
+.about__title {
+  margin-bottom: 30px;
 }
   
 .about__desc {

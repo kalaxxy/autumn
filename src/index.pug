@@ -12,7 +12,7 @@ html(lang="ru")
       main.main
         .section-wrap.section-wrap--bg--mountains
           section.hello.fullscreen-section
-            .container.container--col
+            .container.hello__container
               header.header
                 .header__block
                   .logo КИ
@@ -31,7 +31,7 @@ html(lang="ru")
                   .scroll__icon
 
           section.about.fullscreen-section
-            .container
+            .container.about__container
               .about__left
                 .userinfo
                   .avatar.userinfo__avatar
@@ -40,16 +40,17 @@ html(lang="ru")
                     +userinfo('userinfo')
               .about__right
                 h4.about__subtitle Привет, меня зовут
-                h2.section-title Катерина Иваненко
+                h2.section-title.about__title Катерина Иваненко
                 p.about__desc Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты. 
                 p.about__desc--italic Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все классно и красиво! 
         
         section.profit.fullscreen-section
-          .container.container--col
+          .container.profit__container
             .profit__desc
               h2.section-title--30px Чем я могу быть полезна вам
               .profit__text
                 p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все классно и красиво!
+            .profit__hands
             ul.skills
               -
                 var skills = [
@@ -83,8 +84,8 @@ html(lang="ru")
                             +circle-gradient
 
         section.works.fullscreen-section
-          .container.container--col
-            h2.section-title.section-title--black Мои работы
+          .container.works__container
+            h2.section-title.works__title Мои работы
             .slider
               ul.slider__list
                 li.slider__item.slide
@@ -107,18 +108,15 @@ html(lang="ru")
                       +icon('link', 'link-icon__icon')
                       .link-icon__text Посмотреть сайт
         
-        .section-wrap.section-wrap--bg--leaves
-          section.reviews.fullscreen-section
-            .container.container--col
-              .reviews__header
-                .reviews__header--left
-                  h2.section-title Что обо мне говорят
-                .reviews__header--right
-                  .reviews__arrows.controls
-                    button.controls__item.controls__item--prev.controls__item--rounded
-                      +icon('arrow-down', 'controls__prev')
-                    button.controls__item.controls__item--next.controls__item--rounded
-                      +icon('arrow-down', 'controls__next')
+        .section-wrap.section-wrap--bg--leaves.reviews-wrap
+          section.reviews
+            .container.reviews__container
+              h2.section-title.reviews__title Что обо мне говорят
+              .reviews__arrows.controls
+                button.controls__item.controls__item--prev.controls__item--rounded
+                  +icon('arrow-down', 'controls__prev')
+                button.controls__item.controls__item--next.controls__item--rounded
+                  +icon('arrow-down', 'controls__next')
               .reviews__slider
                 ul.reviews__list.slider-review
                   li.slider-review__item
@@ -140,10 +138,10 @@ html(lang="ru")
                           h4 Владимир Сабанцев
                           h5 Преподаватель
 
-          section.contacts.fullscreen-section
-            .container.container--col
-              h2.section-title Связаться со мной
-              .reviews__form
+          section.contacts
+            .container.contacts__container
+              h2.section-title.contacts__title Связаться со мной
+              .contacts__form
                 form.form(action="")
                   .form__row
                     label.form__elem
@@ -160,24 +158,17 @@ html(lang="ru")
                     button.form__btn(type="submit") Отправить
 
         footer.footer
-          .container
-            .footer__left
-              .footer__block
-                .footer__cprt &copy; 2019
-              .footer__block
-                .footer__title
-                  span.footer__title-name Катерина 
-                  span.footer__title-surname Иваненко
-                .footer__subtitle Личный сайт веб-разработчика
-            .footer__right
-              .footer__right-top
-                +menu('menu', ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"])
-              .footer__right-bottom
-                .footer__block.footer__block--margin
-                  .footer__desc 
-                    p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool
-                  +socials('socials', 'socials--circle')
-                .footer__block.footer__block--margin
-                  .footer__desc 
-                    p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
-                    span.footer__desc--italic--white Martin Golding
+          .container.footer__container
+            .footer__cprt &copy; 2019
+            .footer__title
+              span.footer__name Катерина 
+              span.footer__name Иваненко
+              span.footer__subtitle Личный сайт веб-разработчика
+            .footer__menu
+              +menu('menu', ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"])
+            .footer__desc 
+              p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool
+              +socials('socials', 'socials--circle')
+            .footer__quote 
+                p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                span.footer__desc--italic--white Martin Golding
