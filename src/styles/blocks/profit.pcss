@@ -1,37 +1,61 @@
 .profit {
-  position: relative;
   background: url('~images/content/bg_skills.jpg') center center / cover no-repeat;
 
-  &:before {
-    content: '';
-    position: absolute;
-    background: url('~images/content/hands.png') bottom left / contain no-repeat;
-    width: 40%;
-    height: 100%;
-    left: 0;
-    bottom: -74px;
-
-    @include desktop() {
-      left: -60px;
-      bottom: -63px;
-    }
+  @include phones {
+    height: 200vh;
   }
 }
 
 .profit__container {
-  display: grid;
-  grid-template-columns: 35% 65%;
-  grid-template-rows: 30% 70%;
-  grid-template-areas: 
-    'profit-desc profit-desc'
-    'hands skills';
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &:before {
+    content: "";
+    position: absolute;
+    background: url('~images/content/hands.png') left bottom / contain no-repeat;
+    display: block;
+    bottom: -7%;
+    height: 100%;
+    width: 100%;
+    left: -318px;
+
+    @include desktop {
+      height: 70%;
+      left: -33px;
+    }
+
+    @include menu-hide {
+      height: 60%;
+      left: 0;
+      transform: rotate(-90deg);
+      background-position: bottom center;
+    }
+  }
+
+  @include phones {
+    justify-content: center;
+  }
 }
 
 .profit__desc {
-  grid-area: profit-desc;
-  align-self: center;
   margin: 0 auto;
   width: 45%;
+  margin-bottom: 90px;
+
+  @include menu-hide {
+    margin-bottom: 60px;
+    text-align: center;
+  }
+
+  @include tablets {
+    width: 60%;
+  }
+
+  @include phones {
+    width: 100%;
+  }
 }
 
 .profit__text {
@@ -39,3 +63,10 @@
   opacity: 0.5;
 }
 
+.profit__skills {
+  margin-left: 34%;
+
+  @include menu-hide {
+    margin-left: 0;
+  }
+}

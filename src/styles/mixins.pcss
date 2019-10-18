@@ -21,3 +21,9 @@
     @content;
   }
 }
+
+@mixin menu-hide() {
+  @media screen and (max-width: $bp-menu-hamburger) {
+    @content;
+  }
+}

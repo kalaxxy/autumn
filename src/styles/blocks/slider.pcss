@@ -1,9 +1,9 @@
-.slider {
-  grid-area: slider;
-}
-
 .slide {
   display: flex;
+
+  @include tablets {
+    flex-direction: column;
+  }
 }
 
 .slide__left {
@@ -12,9 +12,37 @@
   flex: 3;
   margin-right: 13%;
 
-  @include desktop() {
+  &:after {
+    content: '1';
+    position: absolute;
+    font-size: 400px;
+    font-weight: 800;
+    color: #e6e6e6;
+    bottom: 24px;
+    left: 96%;
+    z-index: -1;
+
+    @include desktop {
+      font-size: 300px;
+      bottom: 100px;
+    }
+
+    @include phones {
+      content: '';
+    }
+  }
+
+  @include desktop {
     flex: 2;
     margin-right: 9%;
+  }
+
+  @include tablets {
+    margin-bottom: 63px;
+  }
+
+  @include phones {
+    margin-right: 0;
   }
 }
 
@@ -22,8 +50,12 @@
   margin-left: -712px;
   margin-top: 373px;
 
-  @include desktop() {
+  @include desktop {
     margin-top: 280px;;
+  }
+
+  @include phones {
+    display: none;
   }
 }
 
@@ -80,8 +112,14 @@
 .slide__arrows {
   margin-top: 373px;
 
-  @include desktop() {
+  @include desktop {
     margin-top: 280px;;
+  }
+
+  @include phones {
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 }
 
@@ -89,20 +127,14 @@
   position: relative;
   flex: 1;
 
-  &:before {
-    content: '1';
-    position: absolute;
-    font-size: 400px;
-    font-weight: 800;
-    color: #e6e6e6;
-    bottom: 24px;
-    right: 96%;
-    z-index: -1;
+  @include tablets {
+    max-width: 450px;
+    text-align: center;
+    margin: 0 auto;
+  }
 
-    @include desktop() {
-      font-size: 300px;
-      bottom: 100px;
-    }
+  @include phones {
+    text-align: left;
   }
 }
 

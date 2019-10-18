@@ -7,3 +7,39 @@
   width: 100%;
   margin-top: 4%;
 }
+
+.header__menu {
+  @include menu-hide() {
+    display: none;
+  }
+}
+
+.header__socials {
+  @include tablets {
+    width: 80%;
+  }
+
+  @include phones {
+    width: 60%;
+  }
+
+  & .socials__list {
+    @include tablets {
+      justify-content: flex-end;
+    }
+  }
+
+  & .socials__item {
+    @include phones {
+      margin-right: 0;
+    }
+  }
+}
+
+.header__hamburger {
+  display: none;
+
+  @include menu-hide() {
+    display: block;
+  }
+}

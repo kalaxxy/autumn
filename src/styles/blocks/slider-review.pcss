@@ -1,10 +1,14 @@
 .slider-review {
   display: flex;
+
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .slider-review__item {
   flex: 1;
-  margin-left: 100px;
+  margin-left: 90px;
   position: relative;
   width: 40%;
 
@@ -16,10 +20,20 @@
     background: svg-load('quote.svg', fill=rgba(#fff, .05), width=100%, height=100%) center center no-repeat;
     top: 0;
     right: 105%;
+
+    @include tablets {
+      width: 30px;
+      height: 26px;
+    }
   }
 
-  &:last-child {
-    margin-right: 0;
+  @include tablets {
+    margin-left: 50px;
+  }
+
+  @include phones {
+    width: 90%;
+    margin-bottom: 20px;
   }
 }
 
@@ -30,6 +44,14 @@
   p {
     opacity: 0.5;
     margin-bottom: 20px;
+
+    @include phones {
+      margin-bottom: 0;
+    }
+  }
+
+  @include tablets {
+    width: 100%;
   }
 }
 
@@ -39,6 +61,10 @@
 
 .slider-review__avatar {
   margin-right: 30px;
+
+  @include phones {
+    margin-right: 20px ;
+  }
 }
 
 .slider-review__username h4 {

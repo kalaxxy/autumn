@@ -6,39 +6,64 @@
 }
 
 .reviews__container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 0.5fr 1fr;
-  grid-template-areas:
-    'reviews-title controls .'
-    'rewiews-slider rewiews-slider .';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   
   @include desktop() {
-    grid-template-columns: 1fr 1fr 0.5fr;
+    /* grid-template-columns: 1fr 1fr 0.5fr; */
+  }
+
+  @include tablets {
+    /* grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr;
+    grid-template-areas:
+      'reviews-title controls'
+      'rewiews-slider rewiews-slider'; */
+  }
+
+  @include phones {
+    /* grid-template-columns: 1fr;
+    grid-template-rows: 0.3fr 0.3fr 1fr;
+    grid-template-areas:
+      'reviews-title'
+      'controls'
+      'rewiews-slider'; */
   }
 }
 
 .reviews__header {
   display: flex;
+  margin-bottom: 100px;
 
-  &--left {
-    margin-right: 120px;
+  @include phones {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
 .reviews__title {
-  grid-area: reviews-title;
-  align-self: center;
+  margin-right: 120px;
+
+  @include desktop {
+    margin-right: 50px;
+  }
+
+  @include phones {
+    margin-right: 0;
+    margin-bottom: 25px;
+  }
 }
 
 .reviews__arrows {
-  grid-area: controls;
-  align-self: center;
 }
 
 .reviews__slider {
-  grid-area: rewiews-slider;
+  width: 70%;
 
+  @include tablets {
+    width: 100%;
+  }
 }
 
 .reviews__content p {

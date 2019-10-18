@@ -1,7 +1,11 @@
 .tags {
   display: flex;
   font-size: 15px;
+
+  @include tablets {
+    justify-content: center;
   }
+}
 
 .tags__item {
   background-color: rgba(#859ec2, 0.1);

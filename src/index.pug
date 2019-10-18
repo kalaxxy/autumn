@@ -16,11 +16,11 @@ html(lang="ru")
               header.header
                 .header__block
                   .logo КИ
-                .header__block
+                .header__block.header__menu
                   +menu('menu', ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"])
-                .header__block
+                .header__block.header__socials
                   +socials('socials')
-                .header__block(hidden)
+                a.header__hamburger
                   .hamburger
               .hello__content
                 h1.hello__title Личный сайт веб разработчика
@@ -50,8 +50,7 @@ html(lang="ru")
               h2.section-title--30px Чем я могу быть полезна вам
               .profit__text
                 p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все классно и красиво!
-            .profit__hands
-            ul.skills
+            ul.profit__skills.skills
               -
                 var skills = [
                   ['Front-end', [
@@ -111,12 +110,13 @@ html(lang="ru")
         .section-wrap.section-wrap--bg--leaves.reviews-wrap
           section.reviews
             .container.reviews__container
-              h2.section-title.reviews__title Что обо мне говорят
-              .reviews__arrows.controls
-                button.controls__item.controls__item--prev.controls__item--rounded
-                  +icon('arrow-down', 'controls__prev')
-                button.controls__item.controls__item--next.controls__item--rounded
-                  +icon('arrow-down', 'controls__next')
+              .reviews__header
+                h2.section-title.reviews__title Что обо мне говорят
+                .reviews__arrows.controls
+                  button.controls__item.controls__item--prev.controls__item--rounded
+                    +icon('arrow-down', 'controls__prev')
+                  button.controls__item.controls__item--next.controls__item--rounded
+                    +icon('arrow-down', 'controls__next')
               .reviews__slider
                 ul.reviews__list.slider-review
                   li.slider-review__item

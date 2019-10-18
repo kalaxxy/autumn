@@ -6,8 +6,9 @@
     background-repeat: no-repeat;
     background-color: $black;
 
-    @include desktop() {
-      background-size: contain;
+    @include desktop {
+      background-size: initial;
+      background-position: center top;
     }
   }
 
@@ -21,12 +22,17 @@
       background: url('~images/content/leaves.png') center right / contain no-repeat;
       width: 33%;
       height: 100%;
-      bottom: 174px;
-      right: -129px;
+      bottom: 26%;
+      right: -9%;
 
-      @include desktop() {
+      @include desktop {
         width: 50%;
-        right: -250px;
+        right: -12%;
+      }
+      
+      @include tablets {
+        right: -22%;
+        bottom: 35%;
       }
     }
   }
