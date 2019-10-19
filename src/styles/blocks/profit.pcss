@@ -1,8 +1,12 @@
 .profit {
   background: url('~images/content/bg_skills.jpg') center center / cover no-repeat;
 
+  @include tablets {
+    height: 114vh;
+  }
+  
   @include phones {
-    height: 200vh;
+    height: 170vh;
   }
 }
 
@@ -27,10 +31,21 @@
     }
 
     @include menu-hide {
-      height: 60%;
+      height: 50%;
       left: 0;
+      bottom: -95Px;
       transform: rotate(-90deg);
       background-position: bottom center;
+    }
+
+    @include tablets {
+      height: 50%;
+      bottom: -90Px;
+    }
+
+    @include tablets {
+      height: 25%;
+      bottom: -53Px;
     }
   }
 

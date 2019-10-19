@@ -66,10 +66,6 @@
 .slide__preview {
   position: relative;
   display: flex;
-
-  & + .active {
-    border: 3px solid $orange;
-  }
 }
 
 .slide__btn {
@@ -91,6 +87,10 @@
 
   &--4 {
     background: url('~images/content/preview-4.jpg') center center / cover no-repeat;
+  }
+
+  &:focus {
+    border: 3px solid $orange;
   }
 }
 

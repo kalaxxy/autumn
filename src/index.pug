@@ -10,8 +10,26 @@ html(lang="ru")
   body
     .wrapper
       main.main
-        .section-wrap.section-wrap--bg--mountains
-          section.hello.fullscreen-section
+        .parallax.fullscreen-section
+          //- -
+          //-   var items = ['0.1', '0.08', '0.1', '0.12']
+          //- each item, ndx in items
+          //-   div(class=`parallax__layer parallax__layer--${ndx+1}` data-speed=`${item}`)
+          //-     +image(`content/parallax/prlx_${ndx+1}.png`, 'parallax__img')
+          .parallax__layer.parallax__layer--1(data-speed="0.09")
+            +image('content/parallax/prlx_1.jpg', 'parallax__img')
+          .parallax__layer.parallax__layer--2(data-speed="0.11")
+            +image('content/parallax/prlx_2.png', 'parallax__img')
+          .parallax__layer.parallax__layer--3(data-speed="0.08")
+            +image('content/parallax/prlx_3.png', 'parallax__img')
+          .parallax__layer.parallax__layer--4(data-speed="0.14")
+            +image('content/parallax/prlx_4.png', 'parallax__img')
+          .parallax__none.parallax__none--top
+            +image('content/hello_bg_top.jpg', 'parallax__img')
+          .parallax__none.parallax__none--bottom
+            +image('content/hello_bg_bottom.png', 'parallax__img')
+
+          section.hello
             .container.hello__container
               header.header
                 .header__block
@@ -30,7 +48,7 @@ html(lang="ru")
                   span.scroll__text Скролл
                   .scroll__icon
 
-          section.about.fullscreen-section
+          section.about
             .container.about__container
               .about__left
                 .userinfo

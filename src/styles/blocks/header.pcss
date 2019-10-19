@@ -6,6 +6,10 @@
   align-items: center;
   width: 100%;
   margin-top: 4%;
+
+  @include tablets {
+    margin-top: 6%;
+  }
 }
 
 .header__menu {
@@ -20,18 +24,12 @@
   }
 
   @include phones {
-    width: 60%;
+    display: none;
   }
 
   & .socials__list {
     @include tablets {
       justify-content: flex-end;
-    }
-  }
-
-  & .socials__item {
-    @include phones {
-      margin-right: 0;
     }
   }
 }

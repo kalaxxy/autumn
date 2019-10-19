@@ -1,11 +1,28 @@
+.hello {
+  position: relative;
+  height: 80vh;
+
+  @include menu-hide {
+    height: 100vh;
+  }
+}
+
 .hello__container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 35% 35% 30%;
+  grid-template-rows: 32% 38% 30%;
   grid-template-areas:
     'header'
     'content'
     'scroll';
+
+    @include desktop {
+      grid-template-rows: 27% 43% 30%;
+    }
+
+    @include tablets {
+      grid-template-rows: 15% 45% 40%;
+    }
 }
 
 .hello__content {
@@ -17,6 +34,7 @@
   @include tablets {
     flex-direction: column;
     justify-content: center;
+    align-self: start;
     text-align: center;
   }
 }
@@ -45,6 +63,12 @@
   font-weight: 800;
   line-height: 60px;
 
+  @include tablets {
+    font-size: 48Px;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+
   @include phones {
     font-size: 36px;
     width: 70%;
@@ -55,6 +79,7 @@
 .hello__scroll {
   grid-area: scroll;
   font-size: 18px;
+  z-index: 15;
 
   @include desktop {
     font-size: 18px;
