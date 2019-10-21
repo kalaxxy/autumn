@@ -1,7 +1,12 @@
 .about {
   position: relative;
   display: flex;
-  height: 65vh;
+  height: 60vh;
+
+  @include phones {
+    height: auto;
+    margin-bottom: 40%;
+  }
 }
 .about__container {
   display: flex;

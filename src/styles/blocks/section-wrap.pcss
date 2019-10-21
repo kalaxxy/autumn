@@ -20,8 +20,16 @@
       
       @include tablets {
         right: -22%;
-        bottom: 35%;
+        bottom: 25%;
       }
+
+      @include phones {
+        display: none;
+      }
+    }
+
+    @include tablets {
+      background-position: left center;
     }
   }
 }

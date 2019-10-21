@@ -1,35 +1,24 @@
+.reviews {
+  padding: 7% 0;
+
+  @include desktop {
+    padding: 10% 0;
+  }
+
+  @include phones {
+    padding: 25% 0;
+  }
+}
+
 .reviews-wrap {
-  height: 130vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
 }
 
 .reviews__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
-  @include desktop() {
-    /* grid-template-columns: 1fr 1fr 0.5fr; */
-  }
-
-  @include tablets {
-    /* grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.5fr 1fr;
-    grid-template-areas:
-      'reviews-title controls'
-      'rewiews-slider rewiews-slider'; */
-  }
-
-  @include phones {
-    /* grid-template-columns: 1fr;
-    grid-template-rows: 0.3fr 0.3fr 1fr;
-    grid-template-areas:
-      'reviews-title'
-      'controls'
-      'rewiews-slider'; */
-  }
 }
 
 .reviews__header {
@@ -39,6 +28,7 @@
   @include phones {
     flex-direction: column;
     align-items: center;
+    margin-bottom: 40px;
   }
 }
 

@@ -1,12 +1,9 @@
 .profit {
   background: url('~images/content/bg_skills.jpg') center center / cover no-repeat;
+  padding: 5% 0;
 
-  @include tablets {
-    height: 114vh;
-  }
-  
-  @include phones {
-    height: 170vh;
+  @include menu-hide {
+    padding: 0;
   }
 }
 
@@ -31,21 +28,10 @@
     }
 
     @include menu-hide {
-      height: 50%;
-      left: 0;
-      bottom: -95Px;
-      transform: rotate(-90deg);
-      background-position: bottom center;
-    }
-
-    @include tablets {
-      height: 50%;
-      bottom: -90Px;
-    }
-
-    @include tablets {
-      height: 25%;
-      bottom: -53Px;
+      background: url('~images/content/hands_horizontal.png') center bottom / contain no-repeat;
+      width: 70%;
+      left: 12%;
+      bottom: 0;
     }
   }
 
@@ -83,5 +69,6 @@
 
   @include menu-hide {
     margin-left: 0;
+    padding-bottom: 44%;
   }
 }

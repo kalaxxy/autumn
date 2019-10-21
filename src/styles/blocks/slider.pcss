@@ -47,11 +47,12 @@
 }
 
 .slide__pagination {
-  margin-left: -712px;
-  margin-top: 373px;
+  position: absolute;
+  right: 0;
+  bottom: 60px;
 
   @include desktop {
-    margin-top: 280px;;
+    bottom: 30px;
   }
 
   @include phones {
@@ -111,15 +112,13 @@
 
 .slide__arrows {
   margin-top: 373px;
+  position: absolute;
+  left: 100%;
+  bottom: 60px;
+  background-color: $darkgrey;
 
   @include desktop {
-    margin-top: 280px;;
-  }
-
-  @include phones {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    bottom: 30px;
   }
 }
 

@@ -5,37 +5,47 @@
   @include menu-hide {
     height: 100vh;
   }
+
+  @include phones {
+    height: 80vh;
+  }
 }
 
 .hello__container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 32% 38% 30%;
+  grid-template-rows: 15% 65% 20%;
   grid-template-areas:
     'header'
     'content'
     'scroll';
-
-    @include desktop {
-      grid-template-rows: 27% 43% 30%;
-    }
-
-    @include tablets {
-      grid-template-rows: 15% 45% 40%;
-    }
 }
 
 .hello__content {
   grid-area: content;
   display: flex;
+  align-self: center;
   max-width: 730px;
-  margin: 0 auto;
+  margin: 0 auto 14%;
+  
+  @include desktop {
+    margin-bottom: 0;
+  }
+
+  @include menu-hide {
+    margin: 0 auto 20%;
+  }
 
   @include tablets {
     flex-direction: column;
     justify-content: center;
     align-self: start;
     text-align: center;
+  }
+
+  @include phones {
+    align-self: center;
+    margin-bottom: 0;
   }
 }
 
@@ -78,6 +88,7 @@
 
 .hello__scroll {
   grid-area: scroll;
+  align-self: start;
   font-size: 18px;
   z-index: 15;
 

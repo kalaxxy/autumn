@@ -5,6 +5,11 @@
   min-height: 650px;
   overflow: hidden;
   background: url('~images/content/bg_userinfo.jpg') bottom;
+
+  @include phones {
+    background: url('~images/content/hello_bg_mobile.jpg') top center no-repeat,
+    url('~images/content/bg_userinfo.jpg') bottom;;
+  }
 }
 
 .parallax__layer {
@@ -60,5 +65,9 @@
     width: 150%;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  @include phones {
+    display: none;
   }
 }

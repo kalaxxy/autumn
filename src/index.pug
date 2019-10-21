@@ -62,7 +62,7 @@ html(lang="ru")
                 p.about__desc Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты. 
                 p.about__desc--italic Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все классно и красиво! 
         
-        section.profit.fullscreen-section
+        section.profit
           .container.profit__container
             .profit__desc
               h2.section-title--30px Чем я могу быть полезна вам
@@ -100,7 +100,7 @@ html(lang="ru")
                             circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style=`animation-delay: -.${skill.value}s`)
                             +circle-gradient
 
-        section.works.fullscreen-section
+        section.works
           .container.works__container
             h2.section-title.works__title Мои работы
             .slider
@@ -111,9 +111,9 @@ html(lang="ru")
                     .slide__pagination
                       +pagination('slide')
                     .slide__arrows.conrols
-                      button.controls__item.controls__item--next.controls__item--grey
+                      button.controls__item.controls__item--next.controls__item--grey(type='button')
                         +icon('arrow-down', 'controls__next')
-                      button.controls__item.controls__item--prev.controls__item--grey
+                      button.controls__item.controls__item--prev.controls__item--grey(type='button')
                         +icon('arrow-down', 'controls__prev')
                   .slide__right
                     ul.slide__tags.tags
@@ -131,9 +131,9 @@ html(lang="ru")
               .reviews__header
                 h2.section-title.reviews__title Что обо мне говорят
                 .reviews__arrows.controls
-                  button.controls__item.controls__item--prev.controls__item--rounded
+                  button.controls__item.controls__item--prev.controls__item--rounded(type='button')
                     +icon('arrow-down', 'controls__prev')
-                  button.controls__item.controls__item--next.controls__item--rounded
+                  button.controls__item.controls__item--next.controls__item--rounded(type='button')
                     +icon('arrow-down', 'controls__next')
               .reviews__slider
                 ul.reviews__list.slider-review
