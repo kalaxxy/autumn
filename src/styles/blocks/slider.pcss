@@ -9,11 +9,12 @@
 .slide__left {
   position: relative;
   display: flex;
-  flex: 3;
+  width: 66%;
+  height: 549px;
   margin-right: 13%;
 
   &:after {
-    content: '1';
+    content: attr(data-slide);
     position: absolute;
     font-size: 400px;
     font-weight: 800;
@@ -33,15 +34,18 @@
   }
 
   @include desktop {
-    flex: 2;
+    height: 353px;
     margin-right: 9%;
   }
 
   @include tablets {
+    width: 85%;
     margin-bottom: 63px;
   }
 
   @include phones {
+    width: 100%;
+    height: 100%;
     margin-right: 0;
   }
 }
@@ -73,26 +77,12 @@
   position: relative;
   width: 178px;
   height: 100px;
+  padding: 0;
+  overflow: hidden;
+}
 
-  &--1 {
-    background: url('~images/content/preview-1.jpg') center center / cover no-repeat;
-  }
-
-  &--2 {
-    background: url('~images/content/preview-2.jpg') center center / cover no-repeat;
-  }
-
-  &--3 {
-    background: url('~images/content/preview-3.jpg') center center / cover no-repeat;
-  }
-
-  &--4 {
-    background: url('~images/content/preview-4.jpg') center center / cover no-repeat;
-  }
-
-  &:focus {
-    border: 3px solid $orange;
-  }
+.active .slide__btn {
+  border: 3px solid $orange;
 }
 
 .slide__overlay {
@@ -119,6 +109,12 @@
 
   @include desktop {
     bottom: 30px;
+  }
+
+  @include phones {
+    left: initial;
+    right: 0;
+    bottom: 0;
   }
 }
 

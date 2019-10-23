@@ -22,7 +22,16 @@
     }
 
     &:hover {
-      opacity: .3;
+      background-color: $orange;
+    }
+  }
+
+  &--disabled {
+    opacity: .3;
+    cursor: default;
+
+    &:hover {
+      background-color: transparent;
     }
   }
 }
