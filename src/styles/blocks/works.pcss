@@ -8,8 +8,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @include phones {
+    width: 100%;
+  }
 }
 
 .works__title {
   margin-bottom: 5%;
+
+  @include phones {
+    margin-left: 6%;
+  }
 }

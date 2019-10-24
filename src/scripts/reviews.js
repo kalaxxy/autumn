@@ -20,14 +20,13 @@ new Vue({
   },
   data: {
     reviews: [],
-    isOpened: true,
     swiperOption: {
       slidesPerView: 2,
       spaceBetween: 10,
       navigation: {
-        nextEl: '.controls__item--next',
-        prevEl: '.controls__item--prev',
-        disabledClass: 'controls__item--disabled',
+        nextEl: '.reviews__arrow--next',
+        prevEl: '.reviews__arrow--prev',
+        disabledClass: 'reviews__arrow--disabled',
       },
       breakpoints: {  
         480: {       

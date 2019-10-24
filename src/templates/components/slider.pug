@@ -36,9 +36,9 @@ script(type='text/x-template')#slider-preview
     
 script(type='text/x-template')#slider-controls    
   .slide__arrows.controls
-    button(@click.prevent="$emit('slide', 'next')" type='button').controls__item.controls__item--next.controls__item--grey
+    button(@click.prevent="$emit('slide', 'next')" type='button').slide__arrow
       +icon('arrow-down', 'controls__next')
-    button(@click.prevent="$emit('slide', 'prev')" type='button').controls__item.controls__item--prev.controls__item--grey
+    button(@click.prevent="$emit('slide', 'prev')" type='button').slide__arrow
       +icon('arrow-down', 'controls__prev')
       
 script(type='text/x-template')#slider-right      

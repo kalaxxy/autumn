@@ -4,17 +4,17 @@
     "skills": {
       "HTML5": 66,
       "CSS3": 54,
-      "Javascript": 2,
-      "Jquery и Vue.js": 1
+      "Javascript": 20,
+      "Jquery и Vue.js": 10
     } 
   },
   {
     "skillsTitle": "Workflow",
     "skills": {
       "GIT": 85,
-      "Terminal": 8,
-      "Gulp": 5,
-      "Webpack": 1
+      "Terminal": 80,
+      "Gulp": 50,
+      "Webpack": 10
     } 
   }
 ]
