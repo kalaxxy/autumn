@@ -1,24 +1,74 @@
 .profit {
-  position: relative;
   background: url('~images/content/bg_skills.jpg') center center / cover no-repeat;
+  padding: 5% 0;
+
+  @include menu-hide {
+    padding: 0;
+  }
+}
+
+.profit__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
-    background: url('~images/content/hands.png') bottom left / contain no-repeat;
-    width: 30%;
+    background: url('~images/content/hands.png') left bottom / contain no-repeat;
+    display: block;
+    bottom: -7%;
     height: 100%;
-    left: 0;
-    bottom: -74px;
+    width: 100%;
+    left: -318px;
+
+    @include desktop {
+      height: 70%;
+      left: -33px;
+    }
+
+    @include menu-hide {
+      background: url('~images/content/hands_horizontal.png') center bottom / contain no-repeat;
+      width: 70%;
+      left: 12%;
+      bottom: 0;
+    }
+  }
+
+  @include phones {
+    justify-content: center;
   }
 }
 
 .profit__desc {
-  margin: 0 auto 10%;
+  margin: 0 auto;
   width: 45%;
+  margin-bottom: 90px;
+
+  @include menu-hide {
+    margin-bottom: 60px;
+    text-align: center;
+  }
+
+  @include tablets {
+    width: 60%;
+  }
+
+  @include phones {
+    width: 100%;
+  }
 }
 
 .profit__text {
   font-weight: 600;
   opacity: 0.5;
+}
+
+.profit__skills {
+  margin-left: 34%;
+
+  @include menu-hide {
+    margin-left: 0;
+    padding-bottom: 44%;
+  }
 }

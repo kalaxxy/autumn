@@ -1,0 +1,26 @@
+.hamburger {
+  position: relative;
+  width: 24px;
+  height: 4px;
+  background-color: #fff;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 4px;
+    background-color: #fff;
+    bottom: 8px;
+    left: 0;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 4px;
+    background-color: #fff;
+    top: 8px;
+    left: 0;
+  }
+}

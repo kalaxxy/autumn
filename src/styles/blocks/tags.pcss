@@ -1,13 +1,18 @@
 .tags {
   display: flex;
   font-size: 15px;
+  flex-wrap: wrap;
+
+  @include tablets {
+    justify-content: center;
   }
+}
 
 .tags__item {
   background-color: rgba(#859ec2, 0.1);
   border-radius: 50px;
   padding: 16px 20px;
-  margin-right: 10px;
+  margin: 0 10px 10px 0;
 
   &:last-child {
     margin-right: 0;

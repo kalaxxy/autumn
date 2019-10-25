@@ -1,33 +1,86 @@
 .reviews {
-  height: 60%;
-  display: flex; 
-  align-items: center;
+  padding: 7% 0;
+  z-index: 10;
 
-  & .container {
-    justify-content: center; 
+  @include desktop {
+    padding: 10% 0;
   }
+
+  @include phones {
+    padding: 25% 0;
+  }
+}
+
+.reviews-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviews__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .reviews__header {
   display: flex;
+  margin-bottom: 100px;
 
-  &--left {
-    margin-right: 120px;
+  @include phones {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+}
+
+.reviews__title {
+  margin-right: 120px;
+
+  @include desktop {
+    margin-right: 50px;
+  }
+
+  @include phones {
+    margin-right: 0;
+    margin-bottom: 25px;
+  }
+}
+
+.reviews__arrow {
+  width: 50px;
+  height: 50px;
+  transition: .4s;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  margin-right: 30px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    background-color: $orange;
+  }
+
+  &--disabled {
+    opacity: .3;
+    cursor: default;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 }
 
 .reviews__slider {
-  width: 80%;
-}
+  width: 70%;
 
-.reviews__list {
-  width: 80%;
+  @include tablets {
+    width: 100%;
+  }
 }
 
 .reviews__content p {
   min-height: 130px;
-}
-
-.reviews__form {
-  width: 60%;
 }

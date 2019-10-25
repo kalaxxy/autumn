@@ -1,8 +1,23 @@
 .works {
   color: $black;
   position: relative;
+  padding: 15% 0;
+}
 
-  & .container {
-    justify-content: center;
+.works__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include phones {
+    width: 100%;
+  }
+}
+
+.works__title {
+  margin-bottom: 5%;
+
+  @include phones {
+    margin-left: 6%;
   }
 }

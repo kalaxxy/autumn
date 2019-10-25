@@ -1,22 +1,34 @@
 .section-wrap {
-  background-size: cover;
 
-  &--bg--mountains {
-    background-image: url('~images/content/hello_bg.jpg');
-  }
-
-  &--bg--leaves {
-    background-image: url('~images/content/bg_about.jpg');
+    &--bg--leaves {
+    background: url('~images/content/bg_about.jpg') center center / cover no-repeat;
     position: relative;
 
     &:before {
       content: '';
       position: absolute;
       background: url('~images/content/leaves.png') center right / contain no-repeat;
-      width: 33%;
-      height: 100%;
-      bottom: 350px;
-      right: -129px;
+      width: 797px;
+      height: 1404px;
+      bottom: 10%;
+      right: -12%;
+
+      @include desktop {
+        right: -25%;
+      }
+      
+      @include tablets {
+        right: -50%;
+        bottom: -5%;
+      }
+
+      @include phones {
+        display: none;
+      }
+    }
+
+    @include tablets {
+      background-position: left center;
     }
   }
 }

@@ -1,20 +1,41 @@
 .about {
-  display: grid;
-  align-content: center;
-  
-  & .container {
-    justify-content: space-evenly;
+  position: relative;
+  display: flex;
+  height: 60vh;
+
+  @include phones {
+    height: auto;
+    margin-bottom: 40%;
+  }
+}
+.about__container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: fit-content;
+
+  @include phones {
+    flex-direction: column;
   }
 }
 
 .about__left, .about__right {
   max-width: 40%;
+  z-index: 20;
+
+  @include tablets {
+    max-width: 100%;
+  }
 }
 
 .about__subtitle {
   margin-bottom: 5%;
   font-weight: 600;
   opacity: 0.5;
+}
+
+.about__title {
+  margin-bottom: 30px;
 }
   
 .about__desc {

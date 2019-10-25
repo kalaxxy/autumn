@@ -1,6 +1,10 @@
 .menu__list {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @include tablets {
+    justify-content: flex-start;
+  }
 }
 
 .menu__item {
@@ -13,5 +17,9 @@
 
   &:hover {
     color: $orange;
+  }
+
+  @include tablets {
+    margin-bottom: 20px;
   }
 }

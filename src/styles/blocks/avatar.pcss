@@ -7,5 +7,11 @@
   &--75px {
     max-width: 75px;
     max-height: 75px;
+    flex-shrink: 0;
+
+    @include phones {
+      max-width: 50px;
+      max-height: 50px;
+    }
   }
 }

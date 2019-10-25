@@ -1,9 +1,14 @@
 .userinfo__avatar {
   margin: 0 auto 75px;
+
+  @include phones {
+    margin-bottom: 30px;
+  }
 }
 .userinfo__list {
   border-collapse: separate;
-  border-spacing: 90px 20px;
+  border-spacing: 60px 20px;
+  margin: 0 auto;
 }
 
 .userinfo__item {
