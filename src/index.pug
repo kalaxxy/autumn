@@ -29,7 +29,7 @@ html(lang="ru")
           .parallax__none.parallax__none--bottom
             +image('content/hello_bg_bottom.png', 'parallax__img')
 
-          section.hello
+          section.hello#hello
             .container.hello__container
               header.header
                 .header__block
@@ -48,7 +48,7 @@ html(lang="ru")
                   span.scroll__text Скролл
                   .scroll__icon
 
-          section.about
+          section.about#about
             .container.about__container
               .about__left
                 .userinfo
@@ -62,7 +62,7 @@ html(lang="ru")
                 p.about__desc Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты. 
                 p.about__desc--italic Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все классно и красиво! 
         
-        section.profit
+        section.profit#profit
           .container.profit__container
             .profit__desc
               h2.section-title--30px Чем я могу быть полезна вам
@@ -101,7 +101,7 @@ html(lang="ru")
             //-                 circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style=`animation-delay: -.${skill.value}s`)
             //-                 +circle-gradient
 
-        section.works
+        section.works#works
           .container.works__container
             h2.section-title.works__title Мои работы
             .slider
@@ -128,7 +128,7 @@ html(lang="ru")
               //-         .link-icon__text Посмотреть сайт
         
         .section-wrap.section-wrap--bg--leaves.reviews-wrap
-          section.reviews
+          section.reviews#reviews
             #reviews-component
               //- .reviews__header
               //-   h2.section-title.reviews__title Что обо мне говорят
@@ -158,7 +158,7 @@ html(lang="ru")
               //-             h4 Владимир Сабанцев
               //-             h5 Преподаватель
 
-          section.contacts
+          section.contacts#contacts
             .container.contacts__container
               h2.section-title.contacts__title Связаться со мной
               .contacts__form
