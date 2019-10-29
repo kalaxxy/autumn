@@ -13,15 +13,17 @@
 
     .auth
       .auth__title Авторизация
-      form.auth__form
+      form.auth__form(@submit.prevent="login")
         label.auth__elem 
           span.auth__label Логин
-          input.auth__input.auth__input--login(type='text' name='login')
+          input.auth__input.auth__input--login(type='text' name='login' v-model="auth.login")
+          span.error {{ this.validation.firstError('auth.login') }}
         label.auth__elem
           span.auth__label Пароль
-          input.auth__input.auth__input--pass(type='password' name='pass')
+          input.auth__input.auth__input--pass(type='password' name='pass' v-model="auth.pass")
+          span.error {{ this.validation.firstError('auth.pass') }}
         label.auth__switch
-          input.auth__human(type='checkbox' name='human' checked)
+          input.auth__human(type='checkbox' name='human' checked required)
           span.auth__checkbox-custom
           span.auth__switch-title Я человек
         fieldset.auth__switch.auth__switch--field
@@ -179,30 +181,30 @@
               .section__subtitle
                 h3 Редактирование работы
               .works__form
-                form.form
+                form.form.form--column
                   .form__col
                     .form__upload
-                      span.form__dnd Перетащите или загрузите для загрузки изображения
+                      span.form__dnd Перетащите или нажмите кнопку для загрузки изображения
                       label.form__file.button__submit.form__btn Загрузить
-                        input.form__file-input(type='file')
+                        input.form__file-input(type='file' required)
                   .form__col
                     label.form__elem
                       span.form__label Название
-                      input.form__input(type='text' name='works-title')
+                      input.form__input(type='text' name='works-title' required)
                     label.form__elem
                       span.form__label Ссылка
-                      input.form__input(type='text' name='works-link')
+                      input.form__input(type='text' name='works-link' required)
                     label.form__elem
                       span.form__label Описание
                       textarea.form__desc(name='works-desc')
                     label.form__elem
                       span.form__label Добавление тэга
-                      input.form__input(type='text' name='works-tags')
+                      input.form__input(type='text' name='works-tags' required)
                     ul.tags.form__tags
                       li.tags__item
                         span.tags__title HTML
                         button.tags__icon(type='button')
-                    .form__row
+                    .form__row.form__row--center
                       button.form__btn-cancel(type='button') Отмена
                       button.button__submit.form__btn(type='submit') Сохранить
             .section-block__add
@@ -260,16 +262,16 @@
                   .form__pic
                     .form__upload-photo
                       .form__preview
-                      label.form__file.form__file--photo Добавить фото
-                        input.form__file-input(type='file')
+                      label.form__file--photo Добавить фото
+                        input.form__file-input(type='file' name='review-photo' required)
                   .form__col
-                    .form__row
-                      label.form__elem
+                    .form__row.form__row--col
+                      label.form__elem.form__elem--width80
                         span.form__label Имя автора
-                        input.form__input(type='text' name='review-name')
-                      label.form__elem
+                        input.form__input(type='text' name='review-name' required)
+                      label.form__elem.form__elem--width80
                         span.form__label Титул автора
-                        input.form__input(type='text' name='review-position')
+                        input.form__input(type='text' name='review-position' required)
                     label.form__elem
                       span.form__label Отзыв
                       textarea.form__desc(name='review-text')
@@ -313,6 +315,42 @@
 
 </template>
 
+<script>
+  import { Validator } from 'simple-vue-validator';
+  import axios from 'axios';
+
+  export default {
+    data() {
+      return {
+        auth: {
+          login: '',
+          pass: '',
+        },
+      }
+    },
+    validators: {
+      'auth.login': function(value) {
+        return Validator.value(value).required('Заполните логин');
+      },
+      'auth.pass': function(value) {
+        return Validator.value(value).required('Заполните пароль');
+      },
+    },
+    methods: {
+      login() {
+        this.$validate().then(success => {
+            if (success) {
+                console.log('Форма отправлена')
+            } else {
+                console.log('Ошибка валидации')
+            }
+        })
+      }
+
+    }
+  }
+</script>
+
 <style lang="postcss">
   @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
   @import "normalize.css";
@@ -354,14 +392,13 @@
     max-width: 1480px;
     width: 95%;
     height: 100%;
-    // width: 1490px;
 
     @include tablets {
       width: 90%;
     }
 
     @include phones {
-      width: 85%;
+      width: 100%;
     }
   }
 
@@ -423,6 +460,14 @@
     padding: 60px 77px;
     width: 40%;
     margin: 0 auto;
+
+    @include tablets {
+      width: 100%;
+    }
+
+    @include phones {
+      padding: 3%;
+    }
   }
 
   .auth__title {
@@ -603,10 +648,15 @@
     border-radius: 50%;
     overflow: hidden;
     margin-right: 20px;
+    flex-shrink: 0;
   }
 
   .header__block {
     flex: 1;
+
+    @include phones {
+      display: none;
+    }
   }
 
   .header__title {
@@ -620,6 +670,10 @@
     text-align: right;
     font-size: 16px;
     text-decoration: underline;
+
+    @include phones {
+      flex: 0.5;
+    }
   }
 
   .header__logout {
@@ -654,10 +708,23 @@
   .section__header {
     padding: 60px 0;
     display: flex;
+
+    @include phones {
+      flex-direction: column;
+    }
+
+    @include phones {
+      padding: 5%;
+    }
   }
 
   .section__title {
     margin-right: 60px;
+
+    @include phones {
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
   }
 
   .about__add {
@@ -675,6 +742,11 @@
     border-radius: 50%;
     color: #fff;
     margin-right: 15px;
+    line-height: 1.3;
+
+    @include tablets {
+      line-height: 1.4;
+    }
   }
 
   .btn__title {
@@ -688,8 +760,11 @@
   .about__content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     grid-gap: 30px;
+
+    @include phones {
+      grid-template-columns: 1fr;
+    }
   }
   
   .section__block {
@@ -725,6 +800,10 @@
   .group__title {
     width: 60%;
     padding: 10px 10px 10px 0;
+
+    @include phones {
+      width: 70%;
+    }
   }
 
   .group__btns {
@@ -800,6 +879,10 @@
 
   .skill__name {
     width: 60%;
+
+    @include phones {
+      width: 45%;
+    }
   }
 
   .skill__range {
@@ -856,10 +939,27 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 30px;
+
+    @include tablets {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include phones {
+      grid-template-columns: 1fr;
+      grid-gap: 10px;
+    }
   }
 
   .section__block--editing {
     grid-column: 1 / span 3;
+
+    @include tablets {
+      grid-column: 1 / span 2;
+    }
+
+    @include tablets {
+      grid-column: 1 / span 1;
+    }
   }
 
   .form {
@@ -867,8 +967,23 @@
   }
 
   .form__upload {
+    position: relative;
     height: 50%;
     background-color: rgba($darkgrey, 0.1);
+
+    @include tablets {
+      min-height: 300px;
+    }
+  }
+
+  .form__dnd {
+    position: absolute;
+    display: block;
+    width: 60%;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
   }
 
   .form__col {
@@ -881,7 +996,11 @@
   }
 
   .form__file {
+    position: absolute;
     cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .form__file-input {
@@ -950,6 +1069,12 @@
     }
   }
 
+  .form__row--center {
+    @include tablets {
+      justify-content: center;
+    }
+  }
+
   .form__btn-cancel {
     margin-right: 59px;
     color: $orange;
@@ -969,6 +1094,13 @@
     &:hover {
       background-image: linear-gradient(to right, #ff7f00 0%, #ff9d00 100%);
     }
+
+    @include phones {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 10%;
+    }
   }
 
   .section-block__plus {
@@ -981,6 +1113,13 @@
     font-weight: 300;
     line-height: 2;
     margin: 0 auto 30px;
+
+    @include phones {
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      margin: 0 20px 0 0;
+    }
   }
 
   .section-block__plus-text {
@@ -1077,10 +1216,22 @@
 
   .form__pic {
     margin-right: 30px;
+
+    @include phones {
+      margin: 0 auto 40px;
+    }
   }
 
   .reviews__form {
     width: 80%;
+
+    @include tablets {
+      width: 100%;
+    }
+
+    @include phones {
+      flex-direction: column;
+    }
   }
 
   .form__preview {
@@ -1105,9 +1256,47 @@
   }
 
   .form__file--photo {
-    margin: 0 auto;
+    display: block;
+    text-align: center;
     color: $links-color;
     font-weight: 600;
+    cursor: pointer;
+  }
+
+  .form--column {
+    @include tablets {
+      flex-direction: column;
+    }
+
+    & .form__col {
+      margin-right: 0;
+      margin-bottom: 50px;
+    }
+  }
+
+  .works__form {
+    @include tablets {
+      padding: 0 10%;
+    }
+    
+    @include phones {
+      padding: 0 3%;
+    }
+  }
+
+  .form__row--col {
+    flex-direction: column;
+  }
+
+  .form__elem--width80 {
+    @include tablets {
+      width: 80%;
+    }
+
+    @include phones {
+      width: 100%;
+    }
   }
 
 </style>
+
