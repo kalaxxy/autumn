@@ -1,17 +1,21 @@
 <template lang="pug">
   header.header
-      .container.header__container
-        .header__user.userinfo
-          .userinfo__avatar
-            img.avatar(src='../images/content/users/me.jpeg')
-          .userinfo__name Катерина Иваненко
-        .header__block
-          h1.header__title Панель администрирования
-        .header__login
-          a.header__logout Выйти
+    .container.header__container
+      .header__user.userinfo
+        .userinfo__avatar
+          img.avatar(src='../../images/content/users/me.jpeg')
+        .userinfo__name Катерина Иваненко
+      .header__block
+        h1.header__title Панель администрирования
+      .header__login
+        a.header__logout Выйти
 </template>
 
 <style lang="postcss">
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+@import "normalize.css";
+@import "../../styles/mixins.pcss";
+
   .header {
     background-image: linear-gradient(to right, $black 0%, #582b00 100%);
     padding: 20px 0;

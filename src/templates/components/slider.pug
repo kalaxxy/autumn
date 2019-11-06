@@ -5,6 +5,7 @@ script(type='text/x-template')#slider-wrap
       :current-work='currentWork'
       :current-index='currentIndex'
       @slide='handleSlide'
+      @previewClick='handlePreviewClick'
     )
     textContent(
       :current-work='currentWork'
@@ -17,6 +18,7 @@ script(type='text/x-template')#slider-left
     preview(
       :works='works'
       :current-work='currentWork'
+      @previewClick="$emit('previewClick', $event)"
     )
     controls(
       @slide="$emit('slide', $event)"
@@ -29,6 +31,7 @@ script(type='text/x-template')#slider-preview
         v-for='work in works'
         :key='work.id'
         :class='{active: work.id === currentWork.id}'
+        @click.prevent="$emit('previewClick', work.id)"
       )
         button.slide__btn(type='button')
           img(:src='work.photo')

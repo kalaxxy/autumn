@@ -1,354 +1,31 @@
 <template lang="pug">
   .maincontent
-    header.header
-      .container.header__container
-        .header__user.userinfo
-          .userinfo__avatar
-            img.avatar(src='../images/content/users/me.jpeg')
-          .userinfo__name Катерина Иваненко
-        .header__block
-          h1.header__title Панель администрирования
-        .header__login
-          a.header__logout Выйти
-
-    .auth
-      .auth__title Авторизация
-      form.auth__form(@submit.prevent="login")
-        label.auth__elem 
-          span.auth__label Логин
-          input.auth__input.auth__input--login(type='text' name='login' v-model="auth.login")
-          span.error {{ this.validation.firstError('auth.login') }}
-        label.auth__elem
-          span.auth__label Пароль
-          input.auth__input.auth__input--pass(type='password' name='pass' v-model="auth.pass")
-          span.error {{ this.validation.firstError('auth.pass') }}
-        label.auth__switch
-          input.auth__human(type='checkbox' name='human' checked required)
-          span.auth__checkbox-custom
-          span.auth__switch-title Я человек
-        fieldset.auth__switch.auth__switch--field
-          legend.auth__legend Вы точно не робот?
-          label.auth__radio
-            input.auth__bot(type='radio' name='bot' value='yes')
-            span.auth__radio-custom
-            span.auth__switch-title Да
-          label.auth__radio
-            input.auth__bot(type='radio' name='bot' value='no' checked)
-            span.auth__radio-custom
-            span.auth__switch-title Не уверен
-        button.button__submit.auth__submit(type='submit') Отправить
-
+    appHeader
+    auth
     main.main
       .container.main.container
-        nav.menu
-          ul.menu__list
-            each item in ['Обо мне', 'Работы', 'Отзывы']
-              li.menu__item
-                a(class= 'menu__link' href="#") #{item}
-        section.about
-          .section__header
-            h2.section__title Блок «Обо мне»
-            button.about__add 
-              span.btn__plus +
-              span.btn__title Добавить группу
-          .about__content
-            .section__block.group
-              form.group__form
-                .section__subtitle.group__header
-                  input.group__title(type='text' name='group-title' placeholder='Название новой группы')
-                  .group__btns 
-                    button.group__btn.btn__add(type='submit')
-                    button.group__btn.btn__cancel(type='button')
-                ul.group__list
-                  li.group__item
-                .group__adding
-                  input.group__new-skill(type='text' name='new-skill' placeholder='Новый навык')
-                  input.group__new-skill-percent(type='text' name='new-percent' placeholder='100')
-                  span.group__percent %
-                  button.group__skill-add.btn__plus.btn__plus--big(type='submit') +
-            .section__block.group
-              .section__subtitle.group__header.disabled
-                input.group__title(type='text' name='group-title' placeholder='Frontend') 
-                .group__btns
-                  button.group__btn.btn__edit(type='button')
-                  button.group__btn.btn__add(type='submit')
-                  button.group__btn.btn__cancel(type='button')
-              ul.group__list
-                li.group__item.skill.disabled
-                  input.skill__name(type='text' name='skill-name' placeholder='HTML5')
-                  .skill__range
-                    input.skill__num(type='text' name='skill-percent' placeholder='80')
-                    span.skill__percent %
-                  .group__btns
-                    button.group__btn.btn__edit(type='button')
-                    button.group__btn.btn__del(type='button')
-                    button.group__btn.btn__add(type='submit')
-                    button.group__btn.btn__cancel(type='button')
-                li.group__item.skill.disabled
-                  input.skill__name(type='text' name='skill-name' placeholder='CSS3')
-                  .skill__range
-                    input.skill__num(type='text' name='skill-percent' placeholder='73')
-                    span.skill__percent %
-                  .group__btns
-                    button.group__btn.btn__edit(type='button')
-                    button.group__btn.btn__del(type='button')
-                    button.group__btn.btn__add(type='submit')
-                    button.group__btn.btn__cancel(type='button')
-                li.group__item.skill.disabled
-                  input.skill__name(type='text' name='skill-name' placeholder='Javascript')
-                  .skill__range
-                    input.skill__num(type='text' name='skill-percent' placeholder='15')
-                    span.skill__percent %
-                  .group__btns
-                    button.group__btn.btn__edit(type='button')
-                    button.group__btn.btn__del(type='button')
-                    button.group__btn.btn__add(type='submit')
-                    button.group__btn.btn__cancel(type='button')
-                li.group__item.skill
-                  input.skill__name(type='text' name='skill-name' placeholder='Jquery и Vue.js')
-                  .skill__range
-                    input.skill__num(type='text' name='skill-percent' placeholder='10')
-                    span.skill__percent %
-                  .group__btns
-                    button.group__btn.btn__edit(type='button')
-                    button.group__btn.btn__del(type='button')
-                    button.group__btn.btn__add(type='submit')
-                    button.group__btn.btn__cancel(type='button')
-              .group__adding
-                input.group__new-skill(type='text' name='new-skill' placeholder='Новый навык')
-                input.group__new-skill-percent(type='text' name='new-percent' placeholder='100')
-                span.group__percent %
-                button.group__skill-add.btn__plus.btn__plus--big(type='submit') +
-            .section__block.group
-              .section__subtitle.group__header.disabled
-                input.group__title(type='text' name='group-title' placeholder='Workflow') 
-                .group__btns
-                  button.group__btn.btn__edit(type='button')
-                  button.group__btn.btn__add(type='submit')
-                  button.group__btn.btn__cancel(type='button')
-              ul.group__list
-                li.group__item.skill.disabled
-                  input.skill__name(type='text' name='skill-name' placeholder='GIT')
-                  .skill__range
-                    input.skill__num(type='text' name='skill-percent' placeholder='90')
-                    span.skill__percent %
-                  .group__btns
-                    button.group__btn.btn__edit(type='button')
-                    button.group__btn.btn__del(type='button')
-                    button.group__btn.btn__add(type='submit')
-                    button.group__btn.btn__cancel(type='button')
-                li.group__item.skill.disabled
-                  input.skill__name(type='text' name='skill-name' placeholder='Terminal')
-                  .skill__range
-                    input.skill__num(type='text' name='skill-percent' placeholder='73')
-                    span.skill__percent %
-                  .group__btns
-                    button.group__btn.btn__edit(type='button')
-                    button.group__btn.btn__del(type='button')
-                    button.group__btn.btn__add(type='submit')
-                    button.group__btn.btn__cancel(type='button')
-                li.group__item.skill.disabled
-                  input.skill__name(type='text' name='skill-name' placeholder='Gulp')
-                  .skill__range
-                    input.skill__num(type='text' name='skill-percent' placeholder='25')
-                    span.skill__percent %
-                  .group__btns
-                    button.group__btn.btn__edit(type='button')
-                    button.group__btn.btn__del(type='button')
-                    button.group__btn.btn__add(type='submit')
-                    button.group__btn.btn__cancel(type='button')
-                li.group__item.skill.disabled
-                  input.skill__name(type='text' name='skill-name' placeholder='Webpack')
-                  .skill__range
-                    input.skill__num(type='text' name='skill-percent' placeholder='45')
-                    span.skill__percent %
-                  .group__btns
-                    button.group__btn.btn__edit(type='button')
-                    button.group__btn.btn__del(type='button')
-                    button.group__btn.btn__add(type='submit')
-                    button.group__btn.btn__cancel(type='button')
-              .group__adding
-                input.group__new-skill(type='text' name='new-skill' placeholder='Новый навык')
-                input.group__new-skill-percent(type='text' name='new-percent' placeholder='100')
-                span.group__percent %
-                button.group__skill-add.btn__plus.btn__plus--big(type='submit') +
-        
-        section.works
-          .section__header
-            h2.section__title Блок «Работы»
-          .section__content
-            .section__block.section__block--editing
-              .section__subtitle
-                h3 Редактирование работы
-              .works__form
-                form.form.form--column
-                  .form__col
-                    .form__upload
-                      span.form__dnd Перетащите или нажмите кнопку для загрузки изображения
-                      label.form__file.button__submit.form__btn Загрузить
-                        input.form__file-input(type='file' required)
-                  .form__col
-                    label.form__elem
-                      span.form__label Название
-                      input.form__input(type='text' name='works-title' required)
-                    label.form__elem
-                      span.form__label Ссылка
-                      input.form__input(type='text' name='works-link' required)
-                    label.form__elem
-                      span.form__label Описание
-                      textarea.form__desc(name='works-desc')
-                    label.form__elem
-                      span.form__label Добавление тэга
-                      input.form__input(type='text' name='works-tags' required)
-                    ul.tags.form__tags
-                      li.tags__item
-                        span.tags__title HTML
-                        button.tags__icon(type='button')
-                    .form__row.form__row--center
-                      button.form__btn-cancel(type='button') Отмена
-                      button.button__submit.form__btn(type='submit') Сохранить
-            .section-block__add
-              button.section-block__new(type='button') 
-                span.section-block__plus +
-                span.section-block__plus-text Добавить работу
-            .section__block.work
-              .work__pic
-                img.work__img(src='../images/content/preview-1.jpg')
-                ul.tags.work__tags
-                  li.tags__item
-                    span.tags__title HTML
-                  li.tags__item
-                    span.tags__title CSS
-                  li.tags__item
-                    span.tags__title Javascript
-              .work__desc
-                h4.work__title Сайт школы образования
-                p.work__text На портрете была изображена дама в меховой шляпе и боа, она сидела очень прямо и протягивала зрителю тяжелую меховую муфту, в которой целиком исчезала ее рука.
-                a.work__link(href='https://loftschool.com') https://loftschool.com
-                .control-btns 
-                  button.control-btn(type='button') 
-                    span.control-btn__text Править
-                    span.control-btn__edit
-                  button.control-btn(type='button')
-                    span.control-btn__text Удалить
-                    span.control-btn__del
-            .section__block.work
-              .work__pic
-                img.work__img(src='../images/content/preview-2.jpg')
-                ul.tags.work__tags
-                  li.tags__item
-                    span.tags__title HTML
-                  li.tags__item
-                    span.tags__title CSS
-              .work__desc
-                h4.work__title Сайт коворкинга
-                p.work__text Ах! Как бы выразить, как бы вдохнуть в рисунок то, что так полно, так трепетно живет во мне, запечатлеть отражение моей души, как душа моя - отражение предвечного бога!
-                a.work__link(href='https://kalaxxy.github.io/workadium/' target='_blank') https://kalaxxy.github.io/workadium/
-                .control-btns
-                  button.control-btn(type='button') 
-                    span.control-btn__text Править
-                    span.control-btn__edit
-                  button.control-btn(type='button')
-                    span.control-btn__text Удалить
-                    span.control-btn__del
-        section.rewiews
-          .section__header
-            h2.section__title Блок «Отзывы»
-          .section__content
-            .section__block.section__block--editing
-              .section__subtitle
-                h3 Новый отзыв
-              form.form.reviews__form
-                  .form__pic
-                    .form__upload-photo
-                      .form__preview
-                      label.form__file--photo Добавить фото
-                        input.form__file-input(type='file' name='review-photo' required)
-                  .form__col
-                    .form__row.form__row--col
-                      label.form__elem.form__elem--width80
-                        span.form__label Имя автора
-                        input.form__input(type='text' name='review-name' required)
-                      label.form__elem.form__elem--width80
-                        span.form__label Титул автора
-                        input.form__input(type='text' name='review-position' required)
-                    label.form__elem
-                      span.form__label Отзыв
-                      textarea.form__desc(name='review-text')
-                    .form__row
-                      button.form__btn-cancel(type='button') Отмена
-                      button.button__submit.form__btn(type='submit') Сохранить
-            .section-block__add
-              button.section-block__new(type='button') 
-                span.section-block__plus +
-                span.section-block__plus-text Добавить отзыв
-            .section__block.review
-              .section__subtitle.review__header
-                .userinfo__avatar
-                  img.avatar(src='../images/content/users/photo2.jpg')
-                .review__info
-                  h4.review__name Жанна Сорокина
-                  h5.review__position Frontend разработчик
-              p.review__text Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.
-              .control-btns
-                  button.control-btn(type='button') 
-                    span.control-btn__text Править
-                    span.control-btn__edit
-                  button.control-btn(type='button')
-                    span.control-btn__text Удалить
-                    span.control-btn__del
-            .section__block.review
-              .section__subtitle.review__header
-                .userinfo__avatar
-                  img.avatar(src='../images/content/users/photo3.jpg')
-                .review__info
-                  h4.review__name Харитон Палий
-                  h5.review__position Backend разработчик
-              .review__text Я так счастлив, мой друг, так упоен ощущением покоя, что искусство мое страдает от этого.
-              .control-btns
-                  button.control-btn(type='button') 
-                    span.control-btn__text Править
-                    span.control-btn__edit
-                  button.control-btn(type='button')
-                    span.control-btn__text Удалить
-                    span.control-btn__del
-
+        appMenu
+        router-view
+        tip
 </template>
 
 <script>
-  import { Validator } from 'simple-vue-validator';
-  import axios from 'axios';
+import $axios from './requests';
 
-  export default {
-    data() {
-      return {
-        auth: {
-          login: '',
-          pass: '',
-        },
-      }
-    },
-    validators: {
-      'auth.login': function(value) {
-        return Validator.value(value).required('Заполните логин');
-      },
-      'auth.pass': function(value) {
-        return Validator.value(value).required('Заполните пароль');
-      },
-    },
-    methods: {
-      login() {
-        this.$validate().then(success => {
-            if (success) {
-                console.log('Форма отправлена')
-            } else {
-                console.log('Ошибка валидации')
-            }
-        })
-      }
+import appHeader from './components/header.vue'
+import auth from './components/auth.vue'
+import appMenu from './components/menu.vue'
+import tip from './components/tip.vue'
 
-    }
-  }
+export default {
+  name: 'app',
+  components: {
+    appHeader,
+    auth,
+    appMenu,
+    tip
+  },
+}
 </script>
 
 <style lang="postcss">
@@ -456,253 +133,8 @@
     border: initial;
   }
 
-  .auth {
-    padding: 60px 77px;
-    width: 40%;
-    margin: 0 auto;
-
-    @include tablets {
-      width: 100%;
-    }
-
-    @include phones {
-      padding: 3%;
-    }
-  }
-
-  .auth__title {
-    font-size: 36px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  .auth__elem {
-    display: block;
-    margin-bottom: 40px;
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  .auth__label {
-    display: block;
-    margin-left: 50px;
-    opacity: 0.3;
-    font-weight: 600;
-  }
-
-  .auth__input {
-    font-size: 18px;
-    font-weight: 700;
-    border-bottom: 1px solid $black;
-    padding: 20px 50px;
-    width: 100%;
-  }
-
-  .auth__input--login {
-    background: svg-load('user.svg', fill=rgba($black, .3), width=26px, height=30px) left no-repeat;
-
-    &:hover, &:focus {
-      background: svg-load('user.svg', fill=$orange, width=26px, height=30px) left no-repeat;
-    }
-  }
-
-  .auth__input--pass {
-    background: svg-load('key.svg', fill=rgba($black, .3), width=26px, height=30px) left no-repeat;
-
-    &:hover, &:focus {
-      background: svg-load('key.svg', fill=$orange, width=26px, height=30px) left no-repeat;
-    }
-  }
-
-  .auth__switch {
-    display: block;
-    text-align: center;
-    margin-bottom: 50px;
-    font-weight: 600;
-
-    &--field {
-      border: none;
-    }
-  }
-
-  .auth__radio {
-    margin-right: 40px;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  .auth__legend {
-    display: block;
-    margin-bottom: 25px;
-    font-size: 18px;
-    font-weight: 600;
-  }
-
-  .auth__submit {
-    display: block;
-    margin: 0 auto;
-  }
-
-  .button__submit {
-    background-image: linear-gradient(to right, #d0731b 0%, #dc9322 100%);
-    border-radius: 100px;
-    padding: 30px 118px;
-    text-transform: uppercase;
-    color: #fff;
-    font-weight: 700;
-    transition: .4s;
-
-    &:hover {
-      background-image: linear-gradient(to right, #ff7f00 0%, #ff9d00 100%);
-    }
-  }
-
-  .auth__human {
-    appearance: none;
-  }
-
-  .auth__checkbox-custom {
-    position: relative;
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    top: 9Px;
-    margin-right: 15px;
-    border: 1px solid $darkgrey;
-
-      &:after {
-      content: '';
-      position: absolute;
-      background: svg-load('tick.svg', fill=$orange, width=15px, height=15px) center no-repeat;
-      width: 100%;
-      height: 100%;
-      right: 0;
-      top: 0;
-      opacity: 0;
-    }
-  }
-
-  .auth__human:checked + .auth__checkbox-custom:after {
-    opacity: 1;
-  }
-
-  .auth__bot {
-    appearance: none;
-  }
-
-  .auth__radio-custom {
-    position: relative;
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    top: 9Px;
-    margin-right: 15px;
-    border: 1px solid $darkgrey;
-
-    &:after {
-      content: '';
-      position: absolute;
-      background-color: $orange;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-    }
-  }
-
-  .auth__bot:checked + .auth__radio-custom:after {
-    opacity: 1;
-  }
-
-  .header {
-    background-image: linear-gradient(to right, $black 0%, #582b00 100%);
-    padding: 20px 0;
-    color: #fff;
-  }
-
-  .header__container {
-    display: flex;
-    align-items: center;
-  }
-
-  .header__user {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    font-size: 18px;
-    font-weight: 600;
-  }
-
-  .userinfo__avatar {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 20px;
-    flex-shrink: 0;
-  }
-
-  .header__block {
-    flex: 1;
-
-    @include phones {
-      display: none;
-    }
-  }
-
-  .header__title {
-    font-size: 14px;
-    opacity: 0.5;
-    font-weight: normal;
-  }
-
-  .header__login {
-    flex: 1.5;
-    text-align: right;
-    font-size: 16px;
-    text-decoration: underline;
-
-    @include phones {
-      flex: 0.5;
-    }
-  }
-
-  .header__logout {
-    opacity: 0.7;
-    
-    &:hover {
-      opacity: 1;
-    }
-  }
-
   .main {
     background-image: linear-gradient(to top, #fff 0%, #dddbdb 100%);
-  }
-
-  .menu__list {
-    display: flex;
-  }
-
-  .menu__item {
-    padding: 30px;
-
-    &:hover {
-      color: $orange;
-    }
-  }
-
-  .active.menu__item {
-    border-bottom: 3px solid $orange;
-    color: $orange;
   }
 
   .section__header {
@@ -774,6 +206,17 @@
 
     & input {
       border-bottom: 1px solid $black;
+    }
+  }
+
+  .valid-error {
+    border-bottom: 1px solid #cd1515;
+
+    &.error {
+    position: absolute;
+    padding: 16px;
+    background-color: #cd1515;
+    color: #fff;
     }
   }
 
@@ -892,14 +335,14 @@
 
   .skill__num {
     width: 100%;
-    padding-right: 35px;
+    padding-right: 20px;
     padding-left: 10px;
   }
 
   .skill__percent {
     position: absolute;
     top: 4px;
-    right: 15px;
+    right: 5px;
   }
 
   .skill.disabled, .group__header.disabled {
@@ -1053,6 +496,7 @@
   .tags__icon {
     width: 11px;
     height: 11px;
+    padding-left: 15px;
     background: svg-load('remove.svg', fill=$darkgrey, width=100%, height=100%) center right no-repeat;
   }
 
@@ -1127,6 +571,7 @@
   }
 
   .work {
+    position: relative;
     padding: 0;
   }
 
@@ -1168,6 +613,11 @@
   .control-btns {
     display: flex;
     justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
   }
 
   .control-btn__text {
@@ -1188,6 +638,10 @@
     width: 15px;
     height: 15px;
     background: svg-load('remove.svg', fill=#c92e2e, width=100%, height=100%) center right no-repeat;
+  }
+
+  .review {
+    position: relative;
   }
 
   .review__header {
@@ -1269,8 +723,10 @@
     }
 
     & .form__col {
-      margin-right: 0;
-      margin-bottom: 50px;
+      @include tablets {
+        margin-right: 0;
+        margin-bottom: 50px;
+      }
     }
   }
 
