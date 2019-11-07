@@ -10,6 +10,16 @@ export default {
     ADD_CATEGORY(state, category) {
       state.categories.unshift(category);
     },
+    EDIT_CATEGORY(state, editedCategory) {
+      state.categories = state.categories.map(category => {
+        if (category.id === editedCategory.category) {
+          category.category = category.category.filter(
+            category.id === editedCategory.id ? editedCategory : category
+          )
+        }
+        return category;
+      })
+    },
     ADD_SKILL(state, newSkill) {
       state.categories = state.categories.map(category => {
         if (category.id === newSkill.category) {
@@ -19,32 +29,24 @@ export default {
       });
     },
     DELETE_SKILL(state, deletedSkill) {
-      const deleteSkill = category => {
-        category.skills = category.skills.filter(
-          skill => skill.id !== deletedSkill.id
-        );
-      };
-
-      const findRequiredCategory = category => {
+      state.categories = state.categories.map(category => {
         if (category.id === deletedSkill.category) {
-          deleteSkill(category);
+          category.skills = category.skills.filter(
+            skill => skill.id !== deletedSkill.id
+          )
         }
-
         return category;
-      };
-
-      state.categories = state.categories.map(findRequiredCategory);
+      })
     },
     EDIT_SKILL(state, editedSkill) {
-      const editSkill = category => {
-        category.skills = category.skills.map(skill =>
-          skill.id === editedSkill.id ? editedSkill : skill
-        );
-      };
-
-      state.categories = state.categories.map(category =>
-        findRequiredCategory(category, editedSkill, editSkill(category))
-      );
+      state.categories = state.categories.map(category => {
+        if (category.id === editedSkill.category) {
+          category.skills = category.skills.filter(
+            skill.id === editedSkill.id ? editedSkill : skill
+          )
+        }
+        return category;
+      })
     }
   },
   actions: {
@@ -62,6 +64,16 @@ export default {
         commit('SET_CATEGORIES', data);
       } catch (error) {
         
+      }
+    },
+    async editCategory({ commit }, editedCategory) {
+      try {
+        const { data } = await this.$axios.post(
+          `/categories/${editedCategory.id}`,
+          editedCategory
+        );
+        commit("categories/EDIT_CATEGORY", data, { root: true });
+      } catch (error) {
       }
     },
   }

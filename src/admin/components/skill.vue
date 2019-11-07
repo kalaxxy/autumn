@@ -55,13 +55,13 @@ export default {
   },
   methods: {
     ...mapActions('skills', ['editSkill', 'deleteSkill']),
-    async clickEvent(mod) {
+    clickEvent(mod) {
       if (mod === 'edit') {
         this.isEditMode = true;
       } else if (mod === 'add') {
-        this.$validate().then(success => {
+        this.$validate().then(async success => {
           if (success) {
-            this.editSkill(this.editedSkill);
+            await this.editSkill(this.editedSkill);
             this.isEditMode = false
           } else {
             console.log('Ошибка валидации');

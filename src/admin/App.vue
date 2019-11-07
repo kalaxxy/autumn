@@ -213,10 +213,14 @@ export default {
     border-bottom: 1px solid #cd1515;
 
     &.error {
-    position: absolute;
-    padding: 16px;
+    position: fixed;
+    padding: 20px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: #cd1515;
     color: #fff;
+    z-index: 50;
     }
   }
 
@@ -249,26 +253,9 @@ export default {
     }
   }
 
-  .group__btns {
-    display: flex;
-    justify-content: space-between;
-    width: 50px;
-  }
 
-  .group__btn {
-    width: 15px;
-    height: 15px;
-    display: inline-flex;
-    justify-content: space-between;
-  }
 
-  .btn__add {
-    background: svg-load('tick.svg', fill=$green, width=15px, height=15px) center center no-repeat;
-  }
-
-  .btn__cancel {
-    background: svg-load('remove.svg', fill=$red, width=14px, height=12px) center center no-repeat;
-  }
+  
 
   .group__adding {
     position: relative;
@@ -350,32 +337,6 @@ export default {
       border: none;
       pointer-events: none; 
     }
-    
-    & .btn__edit {
-      display: inline-block;
-    }
-
-    & .btn__del {
-      display: inline-block;
-    }
-
-    & .btn__add {
-      display: none;
-    }
-
-    & .btn__cancel {
-      display: none;
-    }
-  }
-
-  .btn__edit {
-    background: svg-load('pencil.svg', fill=rgba($darkgrey, 0.5), width=16px, height=14px) center center no-repeat;
-    display: none;
-  }
-
-  .btn__del {
-    background: svg-load('trash.svg', fill=rgba($darkgrey, 0.5), width=13px, height=15px) center center no-repeat;
-    display: none;
   }
 
   .section__content {

@@ -12,7 +12,7 @@ export default {
     },
     async deleteSkill({ commit, dispatch }, skill) {
       try {
-        const { data } = await this.$axios.delete(`/skills/${skill.id}`);
+        await this.$axios.delete(`/skills/${skill.id}`);
         commit("categories/DELETE_SKILL", skill, { root: true });
         dispatch('tip/showSuccess', 'Скилл удален', { root: true })
       } catch (error) {
@@ -25,7 +25,7 @@ export default {
           `/skills/${editedSkill.id}`,
           editedSkill
         );
-        commit("categories/EDIT_SKILL", data.skill, { root: true });
+        commit("categories/EDIT_SKILL", data, { root: true });
         dispatch('tip/showSuccess', 'Скилл сохранен', { root: true })
       } catch (error) {
         dispatch('tip/showError', 'Скилл не сохранен. Ошибка', { root: true })

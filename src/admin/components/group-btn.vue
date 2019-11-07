@@ -16,3 +16,38 @@ export default {
   }
 }
 </script>
+
+<style lang="postcss">
+  .group__btns {
+    display: flex;
+    justify-content: space-between;
+    width: 50px;
+  }
+
+  .group__btn {
+    width: 15px;
+    height: 15px;
+    display: inline-flex;
+    justify-content: space-between;
+  }
+  
+  .btn__edit {
+    display: inline-block;
+    background: svg-load('pencil.svg', fill=rgba($darkgrey, 0.5), width=16px, height=14px) center center no-repeat;
+  }
+
+  .btn__del {
+    display: inline-block;
+    background: svg-load('trash.svg', fill=rgba($darkgrey, 0.5), width=13px, height=15px) center center no-repeat;
+  }
+
+  .btn__add {
+    display: inline-block;
+    background: svg-load('tick.svg', fill=$green, width=15px, height=15px) center center no-repeat;
+  }
+
+  .btn__cancel {
+    display: inline-block;
+    background: svg-load('remove.svg', fill=$red, width=14px, height=12px) center center no-repeat;
+  }
+</style>

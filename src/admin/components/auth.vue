@@ -71,12 +71,12 @@
             $axios
             .post('/login', this.auth)
             .then(response => {
-              console.log(response.data)
+              console.log(response.data);
+              this.auth.name = '';
+              this.auth.password = '';
+              this.validation.reset();
+              this.$router.replace('/');
             });
-            this.auth.name = '';
-            this.auth.password = '';
-            this.validation.reset();
-            this.$router.replace('/');
             console.log('Форма отправлена')
           } else {
             console.log('Ошибка валидации');

@@ -1,8 +1,11 @@
 <template lang="pug">
   .group__form
-    .section__subtitle.group__header
-      input.group__title(type='text' v-model='category.category')
-      groupBtns
+    .section__subtitle.group__header(:class='disabledClass')
+      input.group__title(
+        type='text' 
+        v-model='category.category'
+      )
+      groupBtns(@click-btn='clickEvent' :is-edit-mode='this.isEditMode')
     ul.group__list
       li.group__item
         skill(
@@ -40,7 +43,7 @@ export default {
       type: Object,
       default: () => ({}),
       required: true
-    }
+    },
   },
   data() {
     return {
@@ -49,6 +52,8 @@ export default {
         title: '',
         percent: ''
       },
+      editedCategory: {...this.category},
+      isEditMode: false
     }
   },
   components: {
@@ -64,15 +69,23 @@ export default {
       return Validator.value(value).greaterThan(0).lessThanOrEqualTo(100).required('Заполните процент');
     },
   },
+  computed: {
+    disabledClass() {
+      return {
+        'disabled': !this.isEditMode
+      }
+    }
+  },
   methods: {
     ...mapActions("skills", ["addSkill"]),
     async addNewSkill() {
       try {
-        this.$validate().then(success => {
+        this.$validate().then(async success => {
           if (success) {
-            this.addSkill(this.skill);
-            this.skill.title = '';
-            this.skill.percent = '';
+            await this.addSkill(this.skill);
+              this.skill.title = '';
+              this.skill.percent = '';
+              this.validation.reset();
           } else {
             console.log('Ошибка валидации');
           }
@@ -81,6 +94,23 @@ export default {
         
       }
     },
+    ...mapActions("categories", ["editCategory"]),
+    clickEvent(mod) {
+      if (mod === 'edit') {
+        this.isEditMode = true;
+      } else if (mod === 'add') {
+        this.editCategory(this.editedCategory);
+        this.isEditMode = false
+      } else if (mod === 'del') {
+        // this.deleteSkill({
+        //   id: this.skill.id,
+        //   category: this.skill.category
+        // })
+      } else if (mod === 'cancel') {
+        this.isEditMode = false;
+        this.editedCategory.category = this.category.category
+      }
+    }
   }
 }
 </script>
