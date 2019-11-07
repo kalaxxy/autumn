@@ -68,11 +68,8 @@ export default {
     },
     async editCategory({ commit }, editedCategory) {
       try {
-        const { data } = await this.$axios.post(
-          `/categories/${editedCategory.id}`,
-          editedCategory
-        );
-        commit("categories/EDIT_CATEGORY", data, { root: true });
+        const { data } = await this.$axios.post(`/categories/${editedCategory.id}`, { title: editedCategory.category });
+        commit("EDIT_CATEGORY", data);
       } catch (error) {
       }
     },

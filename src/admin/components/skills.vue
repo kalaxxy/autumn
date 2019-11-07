@@ -3,7 +3,7 @@
     .section__subtitle.group__header(:class='disabledClass')
       input.group__title(
         type='text' 
-        v-model='category.category'
+        v-model='editedCategory.category'
       )
       groupBtns(@click-btn='clickEvent' :is-edit-mode='this.isEditMode')
     ul.group__list
@@ -99,7 +99,7 @@ export default {
       if (mod === 'edit') {
         this.isEditMode = true;
       } else if (mod === 'add') {
-        this.editCategory(this.editedCategory);
+        this.editCategory(this.category);
         this.isEditMode = false
       } else if (mod === 'del') {
         // this.deleteSkill({
