@@ -6,6 +6,7 @@ import auth from './modules/auth'
 import categories from './modules/categories'
 import skills from './modules/skills'
 import works from './modules/works'
+import reviews from './modules/reviews'
 import tip from './modules/tip'
 
 export default new Vuex.Store({
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     categories,
     skills,
     works,
+    reviews,
     tip
   }
 });

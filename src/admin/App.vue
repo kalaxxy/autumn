@@ -627,26 +627,7 @@ export default {
     }
   }
 
-  .form__preview {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: rgba($darkgrey, 0.1);
-    margin-bottom: 24px;
-
-    &:after {
-      content: '';
-      position: absolute;
-      width: 85px;
-      height: 113px;
-      background: svg-load('user.svg', fill=#fff, width=100%, height=100%) center center no-repeat;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
+  
 
   .form__file--photo {
     display: block;

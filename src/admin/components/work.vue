@@ -34,10 +34,6 @@ export default {
       default: () => ({}),
       required: true
     },
-    isEditMode: {
-      type: Boolean,
-      default: false
-    }
   },
   components: {
     controlBtns: () => import('./control-btns.vue')
@@ -49,10 +45,8 @@ export default {
   },
   methods: {
     ...mapActions('works', ['deleteWork']),
-    editWork(editedWork) {
-      this.isEditMode = true;
-      console.log(this.editedWork);
-      this.editedWork.title = this.work.title;
+    editWork() {
+      this.$emit('edit-work', this.editedWork)
     }
   }
 }

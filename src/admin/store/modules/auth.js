@@ -22,7 +22,7 @@ export default {
   actions: {
     exit({ commit }) {
     commit("RESET_USER");
-    localStorage.clear();
+    localStorage.removeItem('token');
     }
   }  
 }

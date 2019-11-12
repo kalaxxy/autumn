@@ -22,9 +22,10 @@ export default {
     }
   },
   actions: {
-    async fetchWorks({ commit }) {
+    async fetchWorks({ commit, rootState }) {
       try {
-        const { data } = await this.$axios.get('/works/189');
+        let userId = rootState.auth.user.id;
+        const { data } = await this.$axios.get('/works/' + userId);
         commit('SET_WORKS', data);
       } catch (error) {
         
