@@ -13,7 +13,8 @@
               type='text' 
               name='group-title' 
               v-model='title'
-              placeholder='Frontend') 
+              placeholder='Новый навык') 
+            button.group__btn.btn__add(type='submit')
       .section__block.group(v-for="category in categories" :key="category.id")
         skills(
           :category='category'
@@ -38,13 +39,14 @@ export default {
   computed: {
     ...mapState('categories', {
       categories: state => state.categories
-    })
+    }),
   },
   methods: {
     ...mapActions('categories', ['addCategory', 'fetchCategories']),
     async addNewCategory() {
       try {
-        await this.addCategory(this.title)
+        await this.addCategory(this.title);
+        this.title = '';
       } catch (error) {
         console.log('Error')
       }

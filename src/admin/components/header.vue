@@ -8,8 +8,23 @@
       .header__block
         h1.header__title Панель администрирования
       .header__login
-        a.header__logout Выйти
+        button.header__logout(type='button' @click='logout') Выйти
 </template>
+
+<script>
+import $axios from "@/requests";
+import { mapActions } from "vuex";
+
+export default {
+  methods: {
+    ...mapActions("auth", ["exit"]),
+    logout() {
+      this.exit;
+      this.$router.push('/login')
+    }
+  }
+}
+</script>
 
 <style lang="postcss">
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');

@@ -77,35 +77,31 @@ export default {
     }
   },
   methods: {
-    ...mapActions("skills", ["addSkill"]),
-    async addNewSkill() {
-      try {
-        this.$validate().then(async success => {
-          if (success) {
-            await this.addSkill(this.skill);
-              this.skill.title = '';
-              this.skill.percent = '';
-              this.validation.reset();
-          } else {
-            console.log('Ошибка валидации');
-          }
-        })
-      } catch (error) {
-        
-      }
+    ...mapActions('skills', ['addSkill']),
+    addNewSkill() {
+      this.$validate().then(async success => {
+        if (success) {
+          await this.addSkill(this.skill);
+          this.skill.title = '';
+          this.skill.percent = '';
+          this.validation.reset();
+        } else {
+          console.log('Ошибка валидации');
+        }
+      })
     },
-    ...mapActions("categories", ["editCategory"]),
+    ...mapActions('categories', ['editCategory', 'deleteCategory']),
     clickEvent(mod) {
       if (mod === 'edit') {
         this.isEditMode = true;
       } else if (mod === 'add') {
-        this.editCategory(this.category);
+        this.editCategory(this.editedCategory);
         this.isEditMode = false
       } else if (mod === 'del') {
-        // this.deleteSkill({
-        //   id: this.skill.id,
-        //   category: this.skill.category
-        // })
+        this.deleteCategory({
+          id: this.category.id,
+          category: this.category
+        })
       } else if (mod === 'cancel') {
         this.isEditMode = false;
         this.editedCategory.category = this.category.category

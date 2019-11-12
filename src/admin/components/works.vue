@@ -7,9 +7,12 @@
         .section__subtitle
           h3 Редактирование работы
         .works__form
-          form.form.form--column(@submit.prevent='addNewWork')
+          form.form.form--column(@submit.prevent='addNewWork' v-if='!isEditMode')
             .form__col
-              .form__upload
+              .form__upload(
+                :class="{filled: renderedPhoto.length}"
+                :style="{'backgroundImage' : `url(${renderedPhoto})`}"
+              )
                 span.form__dnd Перетащите или нажмите кнопку для загрузки изображения
                 label.form__file.form__btn.button__submit Загрузить
                   input.form__file-input(
@@ -45,9 +48,56 @@
                   v-model='work.techs'
                 )
               ul.tags.form__tags
-                li.tags__item
-                  span.tags__title HTML
-                  button.tags__icon(type='button')
+                li.tags__item(v-for='tag, index in tagsArray')
+                  span.tags__title {{ tag }}
+                  button.tags__icon(type='button' @click='deleteTag(index)')
+              .form__row.form__row--center
+                button.form__btn-cancel(type='button') Отмена
+                button.form__btn.button__submit(type='submit') Сохранить
+          form.form.form--column(@submit.prevent='updateWork' v-if='isEditMode')
+            .form__col
+              .form__upload(
+                :class="{filled: renderedPhoto.length}"
+                :style="{'backgroundImage' : `url(${renderedPhoto})`}"
+              )
+                span.form__dnd Перетащите или нажмите кнопку для загрузки изображения
+                label.form__file.form__btn.button__submit Загрузить
+                  input.form__file-input(
+                    type='file'
+                    @change='appendPhoto'
+                  )
+            .form__col
+              label.form__elem
+                span.form__label Название
+                input.form__input(
+                  type='text' 
+                  name='works-title'
+                  v-model='editedWork.title'
+                )
+              label.form__elem
+                span.form__label Ссылка
+                input.form__input(
+                  type='text' 
+                  name='works-link' 
+                  v-model='editedWork.link'
+                )
+              label.form__elem
+                span.form__label Описание
+                textarea.form__desc(
+                  name='works-desc'
+                  v-model='editedWork.description'
+                )
+              label.form__elem
+                span.form__label Добавление тэга
+                input.form__input(
+                  type='text' 
+                  name='works-tags'
+                  v-model='editedWork.techs'
+                )
+              ul.tags.form__tags
+                li.tags__item(v-for='tag, index in tagsArray')
+                  span.tags__title {{ tag }}
+                  button.tags__icon(type='button' @click='deleteTag(index)')
               .form__row.form__row--center
                 button.form__btn-cancel(type='button') Отмена
                 button.form__btn.button__submit(type='submit') Сохранить
@@ -55,27 +105,12 @@
         button.section-block__new(type='button') 
           span.section-block__plus +
           span.section-block__plus-text Добавить работу
-      .section__block(v-for='work in works' :key='work.id')
-        work(:work='works')
-      //- .section__block.work
-      //-   .work__pic
-      //-     img.work__img(src='../../images/content/preview-2.jpg')
-      //-     ul.tags.work__tags
-      //-       li.tags__item
-      //-         span.tags__title HTML
-      //-       li.tags__item
-      //-         span.tags__title CSS
-      //-   .work__desc
-      //-     h4.work__title Сайт коворкинга
-      //-     p.work__text Ах! Как бы выразить, как бы вдохнуть в рисунок то, что так полно, так трепетно живет во мне, запечатлеть отражение моей души, как душа моя - отражение предвечного бога!
-      //-     a.work__link(href='https://kalaxxy.github.io/workadium/' target='_blank') https://kalaxxy.github.io/workadium/
-      //-   .control-btns
-      //-     button.control-btn(type='button') 
-      //-       span.control-btn__text Править
-      //-       span.control-btn__edit
-      //-     button.control-btn(type='button')
-      //-       span.control-btn__text Удалить
-      //-       span.control-btn__del
+      work(
+        v-for='work in works' 
+        :key='work.id'
+        :work='work'
+        @editWork='editWork(editedWork)'
+      )
 </template>
 
 <script>
@@ -94,7 +129,9 @@ export default {
         link: '',
         description: ''
       },
-      renderedPhoto: ''
+      renderedPhoto: '',
+      isEditMode: false,
+      editedWork: { ...this.work },
     }
   },
   created(){
@@ -103,10 +140,13 @@ export default {
   computed: {
     ...mapState('works', {
       works: state => state.works
-    })
+    }),
+    tagsArray() {
+      return this.work.techs.split(',').filter(el => el.trim())
+    }
   },
   methods: {
-    ...mapActions('works', ['fetchWorks', 'addWork']),
+    ...mapActions('works', ['fetchWorks', 'addWork', 'editWork']),
     appendPhoto(e) {
       const file = e.target.files[0];
       this.work.photo = file;
@@ -124,10 +164,21 @@ export default {
     async addNewWork() {
       try {
         await this.addWork(this.work)
+        this.work.title = '',
+        this.work.techs = '',
+        this.work.photo = '',
+        this.work.link = '',
+        this.work.description = ''
       } catch (error) {
         console.log('Error')
       }
     },
+    deleteTag(index) {
+      let editedTechsArr = this.work.techs.split(',')
+      const deletedTag = editedTechsArr.splice(index, 1)
+      this.work.techs = editedTechsArr.join(',')
+    },
+    
   }
 }
 </script>

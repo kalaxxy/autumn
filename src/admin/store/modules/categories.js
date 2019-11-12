@@ -20,6 +20,11 @@ export default {
         return category;
       })
     },
+    DELETE_CATEGORY(state, deletedCategory) {
+      state.categories = state.categories.filter(
+        category => category.id !== deletedCategory.id
+      );
+    },
     ADD_SKILL(state, newSkill) {
       state.categories = state.categories.map(category => {
         if (category.id === newSkill.category) {
@@ -68,9 +73,20 @@ export default {
     },
     async editCategory({ commit }, editedCategory) {
       try {
-        const { data } = await this.$axios.post(`/categories/${editedCategory.id}`, { title: editedCategory.category });
+        const { data } = await this.$axios.post(
+          `/categories/${editedCategory.id}`, 
+          { title: editedCategory.category });
         commit("EDIT_CATEGORY", data);
       } catch (error) {
+      
+      }
+    },
+    async deleteCategory({ commit }, category) {
+      try {
+        await this.$axios.delete(`/categories/${category.id}`);
+        commit("DELETE_CATEGORY", category, { root: true });
+      } catch (error) {
+      
       }
     },
   }

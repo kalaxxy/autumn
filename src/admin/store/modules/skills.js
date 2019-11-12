@@ -31,16 +31,5 @@ export default {
         dispatch('tip/showError', 'Скилл не сохранен. Ошибка', { root: true })
       }
     },
-    
-    // async addReview(store, review) {
-    //   const formData = new FormData();
-
-    //   Object.keys(review).forEach(key => {
-    //     formData.append(key, review[key]);
-    //   })
-
-    //   await this.$axios.post('/reviews', formData); 
-      
-    // }
   }
 };

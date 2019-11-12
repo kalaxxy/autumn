@@ -1,40 +1,41 @@
 <template lang="pug">
   .auth
-    .auth__title Авторизация
-    form.auth__form(@submit.prevent="login")
-      label.auth__elem 
-        span.auth__label Логин
-        input.auth__input.auth__input--login(
-          type='text' 
-          name='name' 
-          v-model="auth.name"
-          :class="{'valid-error' : validation.hasError('auth.name')}"
-          )
-        .error(:class="{'valid-error' : validation.hasError('auth.name')}") {{ this.validation.firstError('auth.name') }}
-      label.auth__elem
-        span.auth__label Пароль
-        input.auth__input.auth__input--pass(
-          type='password' 
-          name='password' 
-          v-model="auth.password"
-          :class="{'valid-error' : validation.hasError('auth.password')}"
-          )
-        .error(:class="{'valid-error' : validation.hasError('auth.password')}") {{ this.validation.firstError('auth.password') }}
-      label.auth__switch
-        input.auth__human(type='checkbox' name='human' checked required)
-        span.auth__checkbox-custom
-        span.auth__switch-title Я человек
-      fieldset.auth__switch.auth__switch--field
-        legend.auth__legend Вы точно не робот?
-        label.auth__radio
-          input.auth__bot(type='radio' name='bot' value='yes')
-          span.auth__radio-custom
-          span.auth__switch-title Да
-        label.auth__radio
-          input.auth__bot(type='radio' name='bot' value='no' checked)
-          span.auth__radio-custom
-          span.auth__switch-title Не уверен
-      appButton.auth__submit(buttonSend='Отправить')
+    .auth__content
+      .auth__title Авторизация
+      form.auth__form(@submit.prevent="login")
+        label.auth__elem 
+          span.auth__label Логин
+          input.auth__input.auth__input--login(
+            type='text' 
+            name='name' 
+            v-model="auth.name"
+            :class="{'valid-error' : validation.hasError('auth.name')}"
+            )
+          .error(:class="{'valid-error' : validation.hasError('auth.name')}") {{ this.validation.firstError('auth.name') }}
+        label.auth__elem
+          span.auth__label Пароль
+          input.auth__input.auth__input--pass(
+            type='password' 
+            name='password' 
+            v-model="auth.password"
+            :class="{'valid-error' : validation.hasError('auth.password')}"
+            )
+          .error(:class="{'valid-error' : validation.hasError('auth.password')}") {{ this.validation.firstError('auth.password') }}
+        label.auth__switch
+          input.auth__human(type='checkbox' name='human' checked required)
+          span.auth__checkbox-custom
+          span.auth__switch-title Я человек
+        fieldset.auth__switch.auth__switch--field
+          legend.auth__legend Вы точно не робот?
+          label.auth__radio
+            input.auth__bot(type='radio' name='bot' value='yes')
+            span.auth__radio-custom
+            span.auth__switch-title Да
+          label.auth__radio
+            input.auth__bot(type='radio' name='bot' value='no' checked)
+            span.auth__radio-custom
+            span.auth__switch-title Не уверен
+        appButton.auth__submit(buttonSend='Отправить')
       
 </template>
 
@@ -68,10 +69,10 @@
       login() {
         this.$validate().then(success => {
           if (success) {
-            $axios
-            .post('/login', this.auth)
+            const { data: {token}
+            } = $axios.post('/login', this.auth)
             .then(response => {
-              console.log(response.data);
+              localStorage.setItem('token', response.data.token);
               this.auth.name = '';
               this.auth.password = '';
               this.validation.reset();
@@ -93,9 +94,21 @@
 @import "../../styles/mixins.pcss";
 
   .auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(black, .3);
+  }
+
+  .auth__content {
     padding: 60px 77px;
     width: 40%;
-    margin: 0 auto;
+    background-color: #fff;
 
     @include tablets {
       width: 100%;
