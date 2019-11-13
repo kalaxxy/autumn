@@ -22,17 +22,32 @@
             )
           .error(:class="{'valid-error' : validation.hasError('auth.password')}") {{ this.validation.firstError('auth.password') }}
         label.auth__switch
-          input.auth__human(type='checkbox' name='human' checked required)
+          input.auth__human(
+            type='checkbox' 
+            name='human' 
+            v-model="auth.human" 
+          )
           span.auth__checkbox-custom
           span.auth__switch-title Я человек
         fieldset.auth__switch.auth__switch--field
           legend.auth__legend Вы точно не робот?
           label.auth__radio
-            input.auth__bot(type='radio' name='bot' value='yes')
+            input.auth__bot(
+              type='radio' 
+              name='bot' 
+              value='yes'
+              v-model="auth.bot"
+            )
             span.auth__radio-custom
             span.auth__switch-title Да
           label.auth__radio
-            input.auth__bot(type='radio' name='bot' value='no' checked)
+            input.auth__bot(
+              type='radio' 
+              name='bot' 
+              value='no' 
+              checked
+              v-model="auth.bot"
+            )
             span.auth__radio-custom
             span.auth__switch-title Не уверен
         appButton.auth__submit(buttonSend='Отправить')
@@ -53,6 +68,8 @@
         auth: {
           name: '',
           password: '',
+          human: false,
+          bot: ''
         },
       }
     },
@@ -77,6 +94,7 @@
               this.auth.password = '';
               this.validation.reset();
               this.$router.replace('/');
+              console.log(this.auth)
             });
             console.log('Форма отправлена')
           } else {

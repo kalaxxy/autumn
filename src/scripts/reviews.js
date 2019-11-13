@@ -45,9 +45,9 @@ new Vue({
       })
     }
   },
-  created() {
+  async created() {
     let userId = 189;
-    const data = axios.get('https://webdev-api.loftschool.com/reviews/' + userId);
+    const { data } = await axios.get('https://webdev-api.loftschool.com/reviews/' + userId);
     this.reviews = this.addImagePaths(data);
   }
 })

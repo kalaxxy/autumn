@@ -19,7 +19,7 @@ export default {
   methods: {
     ...mapActions("auth", ["exit"]),
     logout() {
-      this.exit;
+      this.exit();
       this.$router.push('/login')
     }
   }
@@ -86,6 +86,9 @@ export default {
 
   .header__logout {
     opacity: 0.7;
+    color: #fff;
+    text-decoration: underline;
+    font-weight: 700;
     
     &:hover {
       opacity: 1;
