@@ -8,12 +8,12 @@
     .work__desc
       h4.work__title {{ work.title }}
       p.work__text {{ work.description }}
-      a.work__link(href='https://loftschool.com') {{ work.link }}
+      a.work__link(:href='work.link') {{ work.link }}
     .control-btns 
       button.control-btn(type='button' @click='editWork')
         span.control-btn__text Править
         span.control-btn__edit
-      button.control-btn(type='button' @click='deleteWork')
+      button.control-btn(type='button' @click='deleteThisWork')
         span.control-btn__text Удалить
         span.control-btn__del
   
@@ -35,9 +35,6 @@ export default {
       required: true
     },
   },
-  components: {
-    controlBtns: () => import('./control-btns.vue')
-  },
   computed: {
     tagsArray() {
       return this.work.techs.split(',')
@@ -47,39 +44,14 @@ export default {
     ...mapActions('works', ['deleteWork']),
     editWork() {
       this.$emit('edit-work', this.editedWork)
+    },
+    deleteThisWork() {
+      this.deleteWork(this.work)
     }
   }
 }
 </script>
 
 <style lang="postcss">
-.control-btns {
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
-}
 
-.control-btn__text {
-  opacity: 0.5;
-  font-weight: 600;
-  margin-right: 8px;
-}
-
-.control-btn__edit {
-  display: inline-block;
-  width: 17px;
-  height: 17px;
-  background: svg-load('pencil.svg', fill=#383bcf, width=100%, height=100%) center right no-repeat;
-}
-
-.control-btn__del {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  background: svg-load('remove.svg', fill=#c92e2e, width=100%, height=100%) center right no-repeat;
-}
 </style>

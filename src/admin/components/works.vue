@@ -96,7 +96,7 @@ export default {
       works: state => state.works
     }),
     tagsArray() {
-      return this.work.techs.split(',').filter(el => el.trim())
+      return this.editedWork.techs.split(',').filter(el => el.trim())
     }
   },
   methods: {
@@ -104,10 +104,11 @@ export default {
     createForm() {
       this.isEdit = false;
       this.isShown = true;
+      this.editedWork = {...this.work}
     },
     appendPhoto(e) {
       const file = e.target.files[0];
-      this.work.photo = file;
+      this.editedWork.photo = file;
 
       const reader = new FileReader();
       try {
@@ -128,32 +129,18 @@ export default {
     submitForm() {
       if (this.isEdit) {
         console.log(this.isEdit);
-        this.updateWork(this.editedWork)
+        this.updateWork(this.editedWork),
+        this.isShown = false;
       } else {
+        console.log(this.isEdit);
         this.addWork(this.editedWork),
-        this.work.title = '',
-        this.work.techs = '',
-        this.work.photo = '',
-        this.work.link = '',
-        this.work.description = ''
+        this.isShown = false;
       }
     },
-    // async addNewWork() {
-    //   try {
-    //     await this.addWork(this.work)
-    //     this.work.title = '',
-    //     this.work.techs = '',
-    //     this.work.photo = '',
-    //     this.work.link = '',
-    //     this.work.description = ''
-    //   } catch (error) {
-    //     console.log('Error')
-    //   }
-    // },
     deleteTag(index) {
-      let editedTechsArr = this.work.techs.split(',')
+      let editedTechsArr = this.editedWork.techs.split(',')
       const deletedTag = editedTechsArr.splice(index, 1)
-      this.work.techs = editedTechsArr.join(',')
+      this.editedWork.techs = editedTechsArr.join(',')
     },
   }
 }

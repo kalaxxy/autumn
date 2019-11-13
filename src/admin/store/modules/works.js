@@ -17,7 +17,7 @@ export default {
     },
     UPDATE_WORK(state, editedWork) {
       state.works = state.works.map(work => {
-        work.id === editedWork.id ? { ...work, work: editedWork.work } : work
+        return work.id === editedWork.id ? editedWork : work
       })
     }
   },
@@ -26,7 +26,7 @@ export default {
       try {
         let userId = rootState.auth.user.id;
         const { data } = await this.$axios.get('/works/' + userId);
-        commit('SET_WORKS', data);
+        commit('SET_WORKS', data.reverse());
       } catch (error) {
         
       }
@@ -55,7 +55,7 @@ export default {
     async updateWork({ commit }, editedWork) {
       try {
         const { data } = await this.$axios.post(
-          `/works/${editedwork.id}`,
+          `/works/${editedWork.id}`,
           editedWork
         );        
         commit("UPDATE_WORK", data.work);        

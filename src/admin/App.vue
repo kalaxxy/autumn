@@ -201,7 +201,9 @@ export default {
     background-color: #fff;
     box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
     padding: 0 30px 30px;
-
+    overflow: hidden;
+    min-width: 100%;
+    
     & input {
       border-bottom: 1px solid $black;
     }
@@ -445,6 +447,8 @@ export default {
 
   .tags {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   .tags__item {
@@ -454,6 +458,7 @@ export default {
     font-size: 13px;
     font-weight: 600;
     margin-right: 10px;
+    margin-bottom: 10px;
 
     &:last-child {
       margin-right: 0;
@@ -577,7 +582,35 @@ export default {
     margin-bottom: 42px;
   }
 
-  
+  .control-btns {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+.control-btn__text {
+  opacity: 0.5;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.control-btn__edit {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  background: svg-load('pencil.svg', fill=#383bcf, width=100%, height=100%) center right no-repeat;
+}
+
+.control-btn__del {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: svg-load('remove.svg', fill=#c92e2e, width=100%, height=100%) center right no-repeat;
+}
 
   .review {
     position: relative;

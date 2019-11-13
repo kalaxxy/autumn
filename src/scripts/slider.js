@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import axios from 'axios';
 
 const preview = {
   template: '#slider-preview',
@@ -54,7 +55,7 @@ new Vue({
   methods: {
     makeArrImages(data) {
       return data.map(item => {
-        const requiredImg = require(`../images/content/${item.photo}`);
+        const requiredImg = `https://webdev-api.loftschool.com/${item.photo}`;
         item.photo = requiredImg;
         return item;
       });
@@ -73,8 +74,9 @@ new Vue({
       this.currentIndex = previewId - 1;
     }
   },
-  created() {
-    const data = require('../data/works.json');
+  async created() {
+    let userId = 189;
+    const data = await axios.get('https://webdev-api.loftschool.com/works/' + userId);
     this.works = this.makeArrImages(data);
   }
 });

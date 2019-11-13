@@ -10,13 +10,23 @@ export default {
     ADD_REVIEW(state, review) {
       state.reviews.unshift(review);
     },
+    UPDATE_REVIEW(state, editedReview) {
+      state.reviews = state.reviews.map(review => {
+        return review.id === editedReview.id ? editedReview : review
+      })
+    },
+    DELETE_REVIEW(state, deletedReview) {
+      state.reviews = state.reviews.filter(
+        review => review.id !== deletedReview.id
+      )
+    },
   },
   actions: {
     async fetchReviews({ commit, rootState }) {
       try {
         let userId = rootState.auth.user.id;
         const { data } = await this.$axios.get('/reviews/' + userId);
-        commit('SET_REVIEWS', data);
+        commit('SET_REVIEWS', data.reverse());
       } catch (error) {
         
       }
@@ -32,6 +42,25 @@ export default {
       commit('ADD_REVIEW', data);
       } catch (error) {
         
+      }
+    },
+    async updateReview({ commit }, editedReview) {
+      try {
+        const { data } = await this.$axios.post(
+          `/reviews/${editedReview.id}`,
+          editedReview
+        );        
+        commit("UPDATE_REVIEW", data.review);        
+      } catch (error) {
+
+      }       
+    },
+    async deleteReview({ commit }, review) {
+      try {
+        await this.$axios.delete(`/reviews/${review.id}`);
+        commit('DELETE_REVIEW', review);
+      } catch (error) {
+      
       }
     },
   },

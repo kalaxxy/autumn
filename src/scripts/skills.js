@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import $axios from "axios";
+import axios from 'axios';
 
 const skill = {
   template:'#skill',
@@ -30,7 +30,9 @@ new Vue({
   components: { skillsBlock },
   async created() {
     let userId = 189;
-    const data = await $axios.get('https://webdev-api.loftschool.com/skills/' + userId);
-    this.skills = data;
+    const respCategory = await axios.get('https://webdev-api.loftschool.com/categories/' + userId);
+       
+    const categories =  respCategory.data;
+    this.skills = categories;
   }
 });
