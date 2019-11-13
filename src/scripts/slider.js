@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import axios from 'axios';
 
 const preview = {
   template: '#slider-preview',
@@ -12,7 +13,7 @@ const controls = {
 const pics = {
   template: '#slider-left',
   components: { preview, controls },
-  props: ['works', 'currentWork', 'currentIndex']
+  props: ['works', 'currentWork', 'currentIndex', 'sliderImageClass'],
 }
 
 const tags = {
@@ -24,10 +25,12 @@ const textContent = {
   template: '#slider-right',
   components: { tags },
   props: ['currentWork'],
+  
   computed: {
     tagsArr() {
-      return this.currentWork.skills.split(', ');
-    }
+      return this.currentWork.techs.split(', ');
+    },
+    
   }
 }
 
@@ -37,11 +40,17 @@ new Vue({
   components: { pics, textContent },
   data: () => ({
     works: [],
-    currentIndex: 0
+    currentIndex: 0,
+    direction: 'next'
   }),
   computed: {
     currentWork() {
       return this.works[this.currentIndex]
+    },
+    sliderImageClass() {
+      let imgClass = {}
+      imgClass['works-' + this.direction] = true
+      return imgClass
     }
   },
   watch: {
@@ -54,24 +63,34 @@ new Vue({
   methods: {
     makeArrImages(data) {
       return data.map(item => {
-        const requiredImg = require(`../images/content/${item.photo}`);
+        const requiredImg = `https://webdev-api.loftschool.com/${item.photo}`;
         item.photo = requiredImg;
         return item;
       });
+    },
+    enterItem(el) {
+      console.log(el);
+      
     },
     handleSlide(direction) {
       switch(direction) {
         case 'next':
           this.currentIndex++;
+          this.direction = 'next'
           break;
         case 'prev':
           this.currentIndex--;
+          this.direction = 'prev'
           break;
       }
+    },
+    handlePreviewClick(previewId) {
+      this.currentIndex = previewId;
     }
   },
-  created() {
-    const data = require('../data/works.json');
+  async created() {
+    let userId = 189;
+    const { data } = await axios.get('https://webdev-api.loftschool.com/works/' + userId);
     this.works = this.makeArrImages(data);
   }
 });

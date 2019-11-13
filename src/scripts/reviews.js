@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import axios from 'axios';
 
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
@@ -38,14 +39,15 @@ new Vue({
   methods: {
     addImagePaths(reviews) {
       return reviews.map(el => {
-        let photo = require(`../images/content/users/${el.photo}`);
+        let photo = `https://webdev-api.loftschool.com/${el.photo}`;
         el.photo = photo
         return el
       })
     }
   },
-  created() {
-    const data = require("../data/reviews.json");
+  async created() {
+    let userId = 189;
+    const { data } = await axios.get('https://webdev-api.loftschool.com/reviews/' + userId);
     this.reviews = this.addImagePaths(data);
   }
 })

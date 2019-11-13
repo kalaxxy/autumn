@@ -7,12 +7,12 @@ script(type='text/x-template')#skills-list
 
 script(type='text/x-template')#skills-block 
   .skill-block
-    h3.skill-block__title {{skill.skillsTitle}}
+    h3.skill-block__title {{skill.category}}
     ul.skill-block__list
-      li.skill-block__item(v-for='(skillItem, skillName) in skill.skills')
+      li.skill-block__item(v-for='skill in skill.skills')
         skill(
-          :skill-name='skillName'
-          :skill-item='skillItem'
+          :skill-name='skill.title'
+          :skill-item='skill.percent'
         )
         
 script(type='text/x-template')#skill        

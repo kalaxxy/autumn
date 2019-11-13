@@ -1,22 +1,29 @@
 script(type='text/x-template')#slider-wrap
-  .slide
+  .slide(v-if='currentWork')
     pics(
       :works='works'
       :current-work='currentWork'
       :current-index='currentIndex'
       @slide='handleSlide'
+      @previewClick='handlePreviewClick'
     )
     textContent(
       :current-work='currentWork'
     )
       
 script(type='text/x-template')#slider-left      
-  .slide__left(:data-slide="currentIndex + 1")
+  .slide__left(:data-slide='currentIndex + 1')
     .slide__pic
-      img(:src='currentWork.photo').slide__img
+      transition(name='works')
+        img.slide__img(
+          :src='currentWork.photo' 
+          :key='currentWork.id'
+          :class='sliderImageClass'
+        )
     preview(
       :works='works'
       :current-work='currentWork'
+      @previewClick="$emit('previewClick', $event)"
     )
     controls(
       @slide="$emit('slide', $event)"
@@ -26,9 +33,10 @@ script(type='text/x-template')#slider-preview
   .slide__pagination
     ul.slide__previews
       li.slide__preview(
-        v-for='work in works'
+        v-for='(work, i) in works'
         :key='work.id'
         :class='{active: work.id === currentWork.id}'
+        @click.prevent="$emit('previewClick', i)"
       )
         button.slide__btn(type='button')
           img(:src='work.photo')
@@ -48,7 +56,7 @@ script(type='text/x-template')#slider-right
     )
     h3.section-title--30px {{ currentWork.title }}
     .slide__desc
-      p {{ currentWork.desc }} 
+      p {{ currentWork.description }} 
     a.link-icon(:href="currentWork.link" target="_blank")
       +icon('link', 'link-icon__icon')
       .link-icon__text Посмотреть сайт

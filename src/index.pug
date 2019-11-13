@@ -11,11 +11,6 @@ html(lang="ru")
     .wrapper
       main.main
         .parallax.fullscreen-section
-          //- -
-          //-   var items = ['0.1', '0.08', '0.1', '0.12']
-          //- each item, ndx in items
-          //-   div(class=`parallax__layer parallax__layer--${ndx+1}` data-speed=`${item}`)
-          //-     +image(`content/parallax/prlx_${ndx+1}.png`, 'parallax__img')
           .parallax__layer.parallax__layer--1(data-speed="0.09")
             +image('content/parallax/prlx_1.jpg', 'parallax__img')
           .parallax__layer.parallax__layer--2(data-speed="0.11")
@@ -69,100 +64,19 @@ html(lang="ru")
               .profit__text
                 p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все классно и красиво!
             #skills-component
-            //- ul.profit__skills.skills
-            //-   -
-            //-     var skills = [
-            //-       ['Front-end', [
-            //-         {title: 'HTML5', value: 66},
-            //-         {title: 'CSS3', value: 54},
-            //-         {title: 'Javascript', value: 2},
-            //-         {title: 'Jquery и Vue.js', value: 1}
-            //-         ]
-            //-       ],
-            //-       ['Workflow', [
-            //-         {title: 'GIT', value: 85},
-            //-         {title: 'Terminal', value: 8},
-            //-         {title: 'Gulp', value: 5},
-            //-         {title: 'Webpack', value: 1}
-            //-         ]
-            //-       ]
-            //-     ]
-
-            //-   each item in skills
-            //-     li.skills__item.skill-block
-            //-       h3.skill-block__title #{item[0]}
-            //-       ul.skill-block__list
-            //-         each skill in item[1]
-            //-           li.skill-block__item
-            //-             .skill
-            //-               span.skill__name #{skill.title}
-            //-               svg.skill__percent(viewbox='0 0 100 100' preserveaspectratio='none')
-            //-                 circle.skill__circle.skill__circle--in(cx='50' cy='50' r='40')
-            //-                 circle.skill__circle.skill__circle--out(cx='50' cy='50' r='40' style=`animation-delay: -.${skill.value}s`)
-            //-                 +circle-gradient
-
         section.works#works
           .container.works__container
             h2.section-title.works__title Мои работы
             .slider
               #slider-component
-              //- ul.slider__list
-              //-   li.slider__item.slide
-              //-     .slide__left
-              //-       +image('content/preview-1.jpg', 'slide__img', alt='Превью сайта школы')
-              //-       .slide__pagination
-              //-         +pagination('slide')
-              //-       .slide__arrows.conrols
-              //-         button.controls__item.controls__item--next.controls__item--grey(type='button')
-              //-           +icon('arrow-down', 'controls__next')
-              //-         button.controls__item.controls__item--prev.controls__item--grey(type='button')
-              //-           +icon('arrow-down', 'controls__prev')
-              //-     .slide__right
-              //-       ul.slide__tags.tags
-              //-         +tags('tags')
-              //-       h3.section-title--30px Сайт школы образования
-              //-       .slide__desc
-              //-         p Эта девчонка проходила обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей! 
-              //-       a.link-icon(href="https://loftschool.com" target="_blank")
-              //-         +icon('link', 'link-icon__icon')
-              //-         .link-icon__text Посмотреть сайт
-        
         .section-wrap.section-wrap--bg--leaves.reviews-wrap
           section.reviews#reviews
             #reviews-component
-              //- .reviews__header
-              //-   h2.section-title.reviews__title Что обо мне говорят
-              //-   .reviews__arrows.controls
-              //-     button.controls__item.controls__item--prev.controls__item--rounded(type='button')
-              //-       +icon('arrow-down', 'controls__prev')
-              //-     button.controls__item.controls__item--next.controls__item--rounded(type='button')
-              //-       +icon('arrow-down', 'controls__next')
-              //- .reviews__slider
-              //-   ul.reviews__list.slider-review
-              //-     li.slider-review__item
-              //-       .slider-review__content.reviews__content
-              //-         p Эта девчонка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              //-         .slider-review__user
-              //-           .avatar.avatar--75px.slider-review__avatar
-              //-             +image('content/dima.jpg', 'avatar__pic')
-              //-           .slider-review__username
-              //-             h4 Ковальчук Дмитрий
-              //-             h5 Основатель LoftSchool
-              //-     li.slider-review__item
-              //-       .slider-review__content.reviews__content
-              //-         p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-              //-         .slider-review__user
-              //-           .avatar.avatar--75px.slider-review__avatar
-              //-             +image('content/vova.jpg', 'avatar__pic')
-              //-           .slider-review__username
-              //-             h4 Владимир Сабанцев
-              //-             h5 Преподаватель
-
           section.contacts#contacts
             .container.contacts__container
               h2.section-title.contacts__title Связаться со мной
               .contacts__form
-                form.form(action="")
+                form.form
                   .form__row
                     label.form__elem
                       span.form__label Введите ваше имя
