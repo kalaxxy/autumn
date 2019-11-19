@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server --mode=development --hot",
     "build": "rm -rf dist && webpack --mode=production --progress",
     "reg": "node reg-util.js",
-    "test": "wdio wdio.conf.js"
+    "test": "jest test/specs/**.js"
   },
   "keywords": [],
   "author": "",

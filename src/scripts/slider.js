@@ -49,7 +49,7 @@ new Vue({
     },
     sliderImageClass() {
       let imgClass = {}
-      imgClass['works-' + this.direction] = true
+      imgClass['slider-img--' + this.direction] = true
       return imgClass
     }
   },
